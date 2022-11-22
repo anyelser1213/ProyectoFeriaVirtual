@@ -1,0 +1,202 @@
+
+
+<div id="layoutSidenav_nav">
+    <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
+        <div class="sb-sidenav-menu">
+            <div class="nav">
+                <div class="sb-sidenav-menu-heading">Inicio</div>
+                <a class="nav-link" href="{% url 'base_principal:index' %}">
+                    <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                    Tablero
+                </a>
+                <div class="sb-sidenav-menu-heading">Administracion</div>
+                
+                <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#menuCalidad" aria-expanded="false" aria-controls="menuCalidad">
+                    <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+                    Calidad
+                    <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                </a>
+                <div class="collapse" id="menuCalidad" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
+                    <nav class="sb-sidenav-menu-nested nav">
+                        <a class="nav-link" href="{% url 'inventario_stock:CalidadCrear' %}">Crear</a>
+                        <a class="nav-link" href="{% url 'inventario_stock:CalidadListar' %}">Listar</a>
+                    </nav>
+                </div>
+
+                <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#menuCategoria" aria-expanded="false" aria-controls="menuCategoria">
+                    <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+                    Categorias
+                    <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                </a>
+                <div class="collapse" id="menuCategoria" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
+                    <nav class="sb-sidenav-menu-nested nav">
+                        <a class="nav-link" href="layout-static.html">Crear</a>
+                        <a class="nav-link" href="layout-sidenav-light.html">Listar</a>
+                    </nav>
+                </div>
+
+                <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#menuModelo" aria-expanded="false" aria-controls="menuModelo">
+                    <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+                    Modelos
+                    <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                </a>
+                <div class="collapse" id="menuModelo" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
+                    <nav class="sb-sidenav-menu-nested nav">
+                        <a class="nav-link" href="layout-static.html">Crear</a>
+                        <a class="nav-link" href="layout-sidenav-light.html">Listar</a>
+                    </nav>
+                </div>
+
+                <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#menuTalla" aria-expanded="false" aria-controls="menuTalla">
+                    <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+                    Tallas
+                    <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                </a>
+                <div class="collapse" id="menuTalla" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
+                    <nav class="sb-sidenav-menu-nested nav">
+                        <a class="nav-link" href="layout-static.html">Crear</a>
+                        <a class="nav-link" href="layout-sidenav-light.html">Listar</a>
+                    </nav>
+                </div>
+
+                <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#menuColor" aria-expanded="false" aria-controls="menuColor">
+                    <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+                    Colores
+                    <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                </a>
+                <div class="collapse" id="menuColor" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
+                    <nav class="sb-sidenav-menu-nested nav">
+                        <a class="nav-link" href="layout-static.html">Crear</a>
+                        <a class="nav-link" href="layout-sidenav-light.html">Listar</a>
+                    </nav>
+                </div>
+
+                <div class="sb-sidenav-menu-heading">Ventas</div>
+
+                <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#menuUbicacion" aria-expanded="false" aria-controls="menuUbicacion">
+                    <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+                    Ubicaciones
+                    <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                </a>
+                <div class="collapse" id="menuUbicacion" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
+                    <nav class="sb-sidenav-menu-nested nav">
+                        <a class="nav-link" href="layout-static.html">Crear</a>
+                        <a class="nav-link" href="layout-sidenav-light.html">Listar</a>
+                    </nav>
+                </div>
+
+                <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#menuProveedor" aria-expanded="false" aria-controls="menuProveedor">
+                    <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+                    Proveedores
+                    <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                </a>
+                <div class="collapse" id="menuProveedor" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
+                    <nav class="sb-sidenav-menu-nested nav">
+                        <a class="nav-link" href="layout-static.html">Crear</a>
+                        <a class="nav-link" href="layout-sidenav-light.html">Listar</a>
+                    </nav>
+                </div>
+
+                
+
+                <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#menuCliente" aria-expanded="false" aria-controls="menuCliente">
+                    <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+                    Clientes
+                    <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                </a>
+                <div class="collapse" id="menuCliente" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
+                    <nav class="sb-sidenav-menu-nested nav">
+                        <a class="nav-link" href="layout-static.html">Crear</a>
+                        <a class="nav-link" href="layout-sidenav-light.html">Listar</a>
+                    </nav>
+                </div>
+
+                <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#menuProducto" aria-expanded="false" aria-controls="menuProducto">
+                    <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+                    Productos
+                    <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                </a>
+                <div class="collapse" id="menuProducto" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
+                    <nav class="sb-sidenav-menu-nested nav">
+                        <a class="nav-link" href="layout-static.html">Crear</a>
+                        <a class="nav-link" href="layout-sidenav-light.html">Listar</a>
+                    </nav>
+                </div>
+
+
+                <div class="sb-sidenav-menu-heading">Inventario</div>
+
+                <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#menuInventario" aria-expanded="false" aria-controls="menuInventario">
+                    <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+                    Inventarios
+                    <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                </a>
+                <div class="collapse" id="menuInventario" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
+                    <nav class="sb-sidenav-menu-nested nav">
+                        <a class="nav-link" href="layout-static.html">Crear</a>
+                        <a class="nav-link" href="layout-sidenav-light.html">Listar</a>
+                    </nav>
+                </div>
+
+                <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#menuStock" aria-expanded="false" aria-controls="menuStock">
+                    <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+                    Stock
+                    <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                </a>
+                <div class="collapse" id="menuStock" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
+                    <nav class="sb-sidenav-menu-nested nav">
+                        <a class="nav-link" href="layout-static.html">Crear</a>
+                        <a class="nav-link" href="layout-sidenav-light.html">Listar</a>
+                    </nav>
+                </div>
+
+                <!-- 
+                <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
+                    <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
+                    Categorias
+                    <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                </a>
+                <div class="collapse" id="collapsePages" aria-labelledby="headingTwo" data-bs-parent="#sidenavAccordion">
+                    <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
+                        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#pagesCollapseAuth" aria-expanded="false" aria-controls="pagesCollapseAuth">
+                            Authentication
+                            <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                        </a>
+                        <div class="collapse" id="pagesCollapseAuth" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordionPages">
+                            <nav class="sb-sidenav-menu-nested nav">
+                                <a class="nav-link" href="login.html">Login</a>
+                                <a class="nav-link" href="register.html">Register</a>
+                                <a class="nav-link" href="password.html">Forgot Password</a>
+                            </nav>
+                        </div>
+                        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#pagesCollapseError" aria-expanded="false" aria-controls="pagesCollapseError">
+                            Error
+                            <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                        </a>
+                        <div class="collapse" id="pagesCollapseError" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordionPages">
+                            <nav class="sb-sidenav-menu-nested nav">
+                                <a class="nav-link" href="401.html">401 Page</a>
+                                <a class="nav-link" href="404.html">404 Page</a>
+                                <a class="nav-link" href="500.html">500 Page</a>
+                            </nav>
+                        </div>
+                    </nav>
+                </div>
+                <div class="sb-sidenav-menu-heading">Addons</div>
+                <a class="nav-link" href="charts.html">
+                    <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
+                    Charts
+                </a>
+                <a class="nav-link" href="tables.html">
+                    <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
+                    Tables
+                </a>
+            -->
+            </div>
+        </div>
+        <div class="sb-sidenav-footer">
+            <div class="small">Logged in as:</div>
+            Start Bootstrap
+        </div>
+    </nav>
+</div>
