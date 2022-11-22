@@ -1,1 +1,1 @@
-"# SistemaVentaDjango" 
+Sistema feria virtual
