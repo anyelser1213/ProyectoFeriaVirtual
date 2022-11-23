@@ -28,7 +28,7 @@ class UserAdmin(BaseUserAdmin):
     add_fieldsets = (
         ("Informacion Obligatoria", {
             'classes': ('wide',),
-            'fields': ('username','email', 'password1', 'password2'),
+            'fields': ('username','email','rol', 'password1', 'password2'),
         }),
         ("Informacion Importante", {
             'classes': ('wide',),
@@ -43,9 +43,9 @@ class UserAdmin(BaseUserAdmin):
 
 
     #Para indicarle al admin que campos queremos mostrar
-    list_display = ('id','username', 'email','is_superuser','admin','activo','fecha_creacion','ultimo_ingreso')
+    list_display = ('id','username', 'email','is_superuser','admin','rol','activo','fecha_creacion','ultimo_ingreso')
     #list_display = ('username', 'email','is_superuser','admin','rol','plan_elegido')
-    list_filter = ('username','email','activo')
+    list_filter = ('username','email','activo','rol')
     
     #Para especificar que campos van a efectuar la busqueda
     search_fields = ('username', 'nombres', 'apellidos', 'email')
@@ -59,7 +59,7 @@ class UserAdmin(BaseUserAdmin):
 
 #Aqui registramos los elementos para que aparezcan en el admin de django
 admin.site.register(Usuarios, UserAdmin)
-
+admin.site.register(Rol)
 
 admin.site.register(Permission)
 

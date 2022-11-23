@@ -76,6 +76,24 @@ def direccion_usuarios(instance, filename):
     return 'usuarios/fondos/{0}/{1}'.format(instance.username, filename)
 
 
+class Rol(models.Model):
+    id = models.AutoField(primary_key=True)
+    nombre = models.CharField(max_length=100,unique=True)
+
+    def __str__(self):
+         return str(self.nombre)
+
+    class Meta:
+
+        verbose_name = "Rol"
+        verbose_name_plural = "Roles"
+
+        permissions = [
+            #Para ver los informes
+            #("informejugada", "InformeJugada"),
+
+        ]#Fin de los permisos
+
 
 
 
@@ -85,13 +103,15 @@ def direccion_usuarios(instance, filename):
 class Usuarios(AbstractBaseUser,PermissionsMixin):
 
     #(Lo que se guarda en bases de datos, lo que se ve al usuario)
-    usuario_tipos = [
+    rol = [
+        
         ('master','Master'),
         ('administrador','Administrador'),
-        ('proveedor','Proveedor'),
-        ('cliente','Cliente'),
-        #('subdistribuidor','subdistribuidor'),
-        #('agencia','agencia'),
+        ('productor','Productor'),
+        ('cliente_E','Cliente Externo'),
+        ('cliente_I','Cliente Interno'),
+        ('transportista','transportista'),
+        ('consultor','consultor'),
     ]
 
     #tipo_plan = [
@@ -113,8 +133,9 @@ class Usuarios(AbstractBaseUser,PermissionsMixin):
     ultimo_ingreso = models.DateTimeField('actualizado', auto_now=True)
     direccion = models.CharField("Direccion",max_length=100,blank=True, null=True,default="Las Adjuntas") 
      
-    
-    tipo_usuario = models.CharField("tipo_usuario",max_length=150,choices=usuario_tipos,default='cliente',blank=True, null=True)
+    rol = models.CharField("Rol",max_length=150,choices=rol,default='cliente',blank=True, null=True)
+    #rol = models.ForeignKey(Rol,on_delete=models.CASCADE,blank=False, null=True)
+    #rol = models.CharField("Rol",max_length=150,choices=usuario_tipos,default='cliente',blank=True, null=True)
 
     #plan_elegido = models.CharField("Plan",
     #    max_length=150,
@@ -162,7 +183,7 @@ class Usuarios(AbstractBaseUser,PermissionsMixin):
         
         
         print(self.id)
-        print("metodo jajajaj:",self._state.adding)
+        #print("metodo jajajaj:",self._state.adding)
 
 
 

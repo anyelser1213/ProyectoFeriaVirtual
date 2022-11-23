@@ -5,6 +5,7 @@ from django.core.exceptions import ValidationError
 from django.db.models import fields
 from django.forms import ClearableFileInput, ModelForm, widgets
 from aplicaciones.inventario_stock.models import *
+from aplicaciones.usuarios.models import Usuarios
 
 
 
@@ -44,3 +45,9 @@ class CalidadForm(ModelForm):
 
 
 '''
+
+class NewUserForm(UserCreationForm):
+
+    class Meta:
+        model = Usuarios
+        fields = '__all__'
