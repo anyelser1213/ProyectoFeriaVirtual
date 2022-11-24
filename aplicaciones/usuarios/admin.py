@@ -17,7 +17,7 @@ class UserAdmin(BaseUserAdmin):
     #Aqui es cuando se va a editar
     fieldsets = (
         #Aqui es para editar
-        ("Informacion Esencial", {'fields': ('username', 'password')}),
+        ("Informacion Esencial", {'fields': ('username','rol', 'password')}),
         ("Permisologia", {
             'classes': ('wide',),
             'fields': ('is_superuser','admin','activo','groups','user_permissions'),
@@ -59,7 +59,7 @@ class UserAdmin(BaseUserAdmin):
 
 #Aqui registramos los elementos para que aparezcan en el admin de django
 admin.site.register(Usuarios, UserAdmin)
-admin.site.register(Rol)
+#admin.site.register(Rol)
 
 admin.site.register(Permission)
 

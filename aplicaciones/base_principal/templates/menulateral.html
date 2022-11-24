@@ -9,55 +9,25 @@
                     <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                     Tablero
                 </a>
-                <div class="sb-sidenav-menu-heading">Administracion</div>
+
                 
-                <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#menuCalidad" aria-expanded="false" aria-controls="menuCalidad">
-                    <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
-                    Productores
-                    <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-                </a>
-                <div class="collapse" id="menuCalidad" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
-                    <nav class="sb-sidenav-menu-nested nav">
-                        <a class="nav-link" href="{% url 'inventario_stock:ProductoresCrear' %}">Crear</a>
-                        <a class="nav-link" href="{% url 'inventario_stock:ProductoresCrear' %}">Listar</a>
-                    </nav>
-                </div>
+                
+                <div class="sb-sidenav-menu-heading">Ordenes</div>
 
-                <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#menuCategoria" aria-expanded="false" aria-controls="menuCategoria">
+                <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#menuPeticion" aria-expanded="false" aria-controls="menuPeticion">
                     <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
-                    Categorias
+                    Peticiones
                     <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                 </a>
-                <div class="collapse" id="menuCategoria" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
+                <div class="collapse" id="menuPeticion" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                     <nav class="sb-sidenav-menu-nested nav">
-                        <a class="nav-link" href="layout-static.html">Crear</a>
-                        <a class="nav-link" href="layout-sidenav-light.html">Listar</a>
+                        <a class="nav-link" href="layout-static.html">Crear Petición</a>
+                        <a class="nav-link" href="layout-sidenav-light.html">Listar Peticiones</a>
                     </nav>
                 </div>
+                
 
-                <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#menuModelo" aria-expanded="false" aria-controls="menuModelo">
-                    <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
-                    Modelos
-                    <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-                </a>
-                <div class="collapse" id="menuModelo" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
-                    <nav class="sb-sidenav-menu-nested nav">
-                        <a class="nav-link" href="layout-static.html">Crear</a>
-                        <a class="nav-link" href="layout-sidenav-light.html">Listar</a>
-                    </nav>
-                </div>
-
-                <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#menuTalla" aria-expanded="false" aria-controls="menuTalla">
-                    <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
-                    Pesos
-                    <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-                </a>
-                <div class="collapse" id="menuTalla" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
-                    <nav class="sb-sidenav-menu-nested nav">
-                        <a class="nav-link" href="layout-static.html">Crear</a>
-                        <a class="nav-link" href="layout-sidenav-light.html">Listar</a>
-                    </nav>
-                </div>
+                
                 <!---
                 <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#menuColor" aria-expanded="false" aria-controls="menuColor">
                     <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
@@ -72,44 +42,6 @@
                 </div>
                 ---->
                 <div class="sb-sidenav-menu-heading">Ventas</div>
-
-                <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#menuUbicacion" aria-expanded="false" aria-controls="menuUbicacion">
-                    <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
-                    Ubicaciones
-                    <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-                </a>
-                <div class="collapse" id="menuUbicacion" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
-                    <nav class="sb-sidenav-menu-nested nav">
-                        <a class="nav-link" href="layout-static.html">Crear</a>
-                        <a class="nav-link" href="layout-sidenav-light.html">Listar</a>
-                    </nav>
-                </div>
-
-                <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#menuProveedor" aria-expanded="false" aria-controls="menuProveedor">
-                    <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
-                    Productores
-                    <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-                </a>
-                <div class="collapse" id="menuProveedor" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
-                    <nav class="sb-sidenav-menu-nested nav">
-                        <a class="nav-link" href="layout-static.html">Crear</a>
-                        <a class="nav-link" href="layout-sidenav-light.html">Listar</a>
-                    </nav>
-                </div>
-
-                
-
-                <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#menuCliente" aria-expanded="false" aria-controls="menuCliente">
-                    <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
-                    Clientes
-                    <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-                </a>
-                <div class="collapse" id="menuCliente" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
-                    <nav class="sb-sidenav-menu-nested nav">
-                        <a class="nav-link" href="layout-static.html">Crear</a>
-                        <a class="nav-link" href="layout-sidenav-light.html">Listar</a>
-                    </nav>
-                </div>
 
                 <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#menuProducto" aria-expanded="false" aria-controls="menuProducto">
                     <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
@@ -138,17 +70,7 @@
                     </nav>
                 </div>
 
-                <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#menuStock" aria-expanded="false" aria-controls="menuStock">
-                    <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
-                    Stock
-                    <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-                </a>
-                <div class="collapse" id="menuStock" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
-                    <nav class="sb-sidenav-menu-nested nav">
-                        <a class="nav-link" href="layout-static.html">Crear</a>
-                        <a class="nav-link" href="layout-sidenav-light.html">Listar</a>
-                    </nav>
-                </div>
+               
 
                 <!-- 
                 <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
@@ -195,8 +117,8 @@
             </div>
         </div>
         <div class="sb-sidenav-footer">
-            <div class="small">Logged in as:</div>
-            Start Bootstrap
+            <div class="small">Bienvenido:</div>
+            <span>{{user.username}}</span>
         </div>
     </nav>
 </div>

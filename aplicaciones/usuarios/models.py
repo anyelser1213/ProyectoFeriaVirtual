@@ -75,7 +75,7 @@ def direccion_usuarios(instance, filename):
     print(instance.username)
     return 'usuarios/fondos/{0}/{1}'.format(instance.username, filename)
 
-
+"""
 class Rol(models.Model):
     id = models.AutoField(primary_key=True)
     nombre = models.CharField(max_length=100,unique=True)
@@ -95,7 +95,7 @@ class Rol(models.Model):
         ]#Fin de los permisos
 
 
-
+"""
 
 
 
