@@ -4,7 +4,7 @@ from django.conf import settings
 from django.db import models
 
 #Estos dos modelos son para crear permisos personalizados
-from django.contrib.auth.models import Permission
+from django.contrib.auth.models import Permission,Group
 from django.contrib.contenttypes.models import ContentType
 
 
@@ -21,7 +21,7 @@ from django.db.models.signals import pre_save, post_save, pre_delete, post_delet
 
 class UsuarioManager(BaseUserManager):
 
-    def create_user(self,email,username,password=None,admin = False,is_superuser =False,plan_elegido="gratis"):
+    def create_user(self,email,username,password=None,admin = False,is_superuser =False,rol="administrador"):
         print("Creamos Usuario Normal")
         #if not email:
         #    raise ValueError('El usuario debe tener un correo electronico')
@@ -31,7 +31,7 @@ class UsuarioManager(BaseUserManager):
             username = username,
             email = self.normalize_email(email),
             password = password,
-            #rol = rol,
+            rol = rol,
             admin =admin,
             is_superuser = is_superuser,
             #plan_elegido = plan_elegido,
@@ -46,21 +46,18 @@ class UsuarioManager(BaseUserManager):
     
 
     #Funcion para usuario administrador
-    def create_superuser(self,email,username,password,admin = True,is_superuser = True):
+    def create_superuser(self,email,username,password,rol="administrador",admin = True,is_superuser = True):
         print("Creamos superusuario")
 
         usuario = self.create_user(
             email = email,  
             username = username,
-            #rol = rol,
-            #plan_elegido = plan_elegido,
+            rol = rol,
             password = password,
             admin =admin,
             is_superuser = is_superuser
         )
         
-            
-            
         print("Entramos en superuser")
         usuario.save()
         return usuario
@@ -182,8 +179,52 @@ class Usuarios(AbstractBaseUser,PermissionsMixin):
         
         
         
-        print(self.id)
-        #print("metodo jajajaj:",self._state.adding)
+        print(self.id,"Guardamos al loco : ", self.rol)
+
+        migrupo = ""
+        #Vamos a probar
+        if Group.objects.all().count() >0:
+
+            print("Ya existen los grupos\n\n")
+            migrupo = Group.objects.get(name=str(self.rol))
+            self.groups.add(migrupo)
+            #self.groups.add(migrupo)
+
+        else:
+
+            print("Vamos a crear a los grupos")
+
+            Grupo_administrador = Group.objects.create(name="administrador")
+            Grupo_productor = Group.objects.create(name="productor") #Permisos solo para productor
+            Grupo_cliente = Group.objects.create(name="cliente") #Permisos solo para cliente
+
+
+            Grupo_administrador.permissions.set(list(Permission.objects.all())) #Todos los permisos
+            Grupo_productor.permissions.add(
+                                Permission.objects.get(name="Can add inventario"),
+                                Permission.objects.get(name="Can change inventario"),
+                                Permission.objects.get(name="Can delete inventario"),
+                                Permission.objects.get(name="Can view inventario"),
+                                Permission.objects.get(name="Can add producto"),
+                                Permission.objects.get(name="Can change producto"),
+                                Permission.objects.get(name="Can delete producto"),
+                                Permission.objects.get(name="Can view producto"),
+            )
+            
+
+            #Grupo_administrador.permissions.add(permiso1, permiso2, ...)
+            #self.groups.add(Grupo_administrador)
+
+            migrupo = Group.objects.get(name=str(self.rol))
+            self.groups.add(migrupo)
+            #self.per.add(migrupo)
+
+
+
+
+
+
+        print("Gruepo asignado: ",migrupo," Permisos:",self.get_group_permissions())
 
 
 
