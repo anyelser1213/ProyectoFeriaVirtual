@@ -54,8 +54,43 @@ class Inventario(models.Model):
     
  '''
 
+class Peticion_cliente(models.Model):
 
-class Contrato_vigencia(models.Model):
+    status = [
+        ('revision','Revisión'),
+        ('aprobada','Aprovada'),
+        ('oferta','Oferta'),
+        ('atendida','Atendida'),
+        ('cancelada','Cancelada'),
+    ]
+
+    id = models.AutoField(primary_key=True)
+    cliente = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE,blank=True, null=True)
+    estado_peticion = models.CharField("estado",max_length=150,choices=status,default='revision',blank=True, null=True)
+    #fecha_caducidad = models.DateField(auto_now_add=False,auto_now=False,blank=True) #Solo fecha
+
+    def __str__(self):
+         return "Peticion: "+str(self.cliente.username)+", Estatus: "+str(self.estado_contrato)
+
+    class Meta:
+
+        verbose_name = "Peticion"
+        verbose_name_plural = "Peticiones"
+
+        permissions = [
+            #(Lo que se guarda en bases de datos, lo que se ve al usuario)
+            
+            #Permisos para iniciar y consultar jugadas
+            ("peticiones", "Peticiones"),
+            #("consultarjugada", "ConsultarJugada"),
+
+            #Para ver los informes
+            #("informejugada", "InformeJugada"),
+
+        ]#Fin de los permisos
+
+
+class Contrato_productor(models.Model):
 
     status = [
         ('vigente','Vigente'),

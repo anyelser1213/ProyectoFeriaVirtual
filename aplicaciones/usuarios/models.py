@@ -196,8 +196,8 @@ class Usuarios(AbstractBaseUser,PermissionsMixin):
 
             Grupo_administrador = Group.objects.create(name="administrador")
             Grupo_productor = Group.objects.create(name="productor") #Permisos solo para productor
-            Grupo_cliente = Group.objects.create(name="cliente") #Permisos solo para cliente
-
+            Grupo_cliente_interno = Group.objects.create(name="cliente_I") #Permisos solo para clientes interno(nacionales)
+            Grupo_cliente_externo = Group.objects.create(name="cliente_E") #Permisos solo para clientes externo(internacionales)
 
             Grupo_administrador.permissions.set(list(Permission.objects.all())) #Todos los permisos
             Grupo_productor.permissions.add(
@@ -209,6 +209,12 @@ class Usuarios(AbstractBaseUser,PermissionsMixin):
                                 Permission.objects.get(name="Can change producto"),
                                 Permission.objects.get(name="Can delete producto"),
                                 Permission.objects.get(name="Can view producto"),
+            )
+            Grupo_cliente_interno.permissions.add(
+                                Permission.objects.get(name="Peticiones"),
+            )
+            Grupo_cliente_externo.permissions.add(
+                                Permission.objects.get(name="Peticiones"),
             )
             
 

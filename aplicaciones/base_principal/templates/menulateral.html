@@ -12,6 +12,7 @@
 
                 
                 
+                {% if perms.inventario_stock.peticiones %}
                 <div class="sb-sidenav-menu-heading">Ordenes</div>
 
                 <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#menuPeticion" aria-expanded="false" aria-controls="menuPeticion">
@@ -25,22 +26,9 @@
                         <a class="nav-link" href="layout-sidenav-light.html">Listar Peticiones</a>
                     </nav>
                 </div>
-                
+                {% endif %}
 
-                
-                <!---
-                <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#menuColor" aria-expanded="false" aria-controls="menuColor">
-                    <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
-                    Colores
-                    <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-                </a>
-                <div class="collapse" id="menuColor" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
-                    <nav class="sb-sidenav-menu-nested nav">
-                        <a class="nav-link" href="layout-static.html">Crear</a>
-                        <a class="nav-link" href="layout-sidenav-light.html">Listar</a>
-                    </nav>
-                </div>
-                ---->
+                {% if perms.inventario_stock.add_producto %}
                 <div class="sb-sidenav-menu-heading">Ventas</div>
 
                 <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#menuProducto" aria-expanded="false" aria-controls="menuProducto">
@@ -50,12 +38,14 @@
                 </a>
                 <div class="collapse" id="menuProducto" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                     <nav class="sb-sidenav-menu-nested nav">
-                        <a class="nav-link" href="layout-static.html">Crear</a>
-                        <a class="nav-link" href="layout-sidenav-light.html">Listar</a>
+                        <a class="nav-link" href="layout-static.html">Crear Producto</a>
+                        <a class="nav-link" href="layout-sidenav-light.html">Listar Productos</a>
                     </nav>
                 </div>
+                {% endif %}
 
 
+                {% if perms.inventario_stock.add_inventario %}
                 <div class="sb-sidenav-menu-heading">Inventario</div>
 
                 <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#menuInventario" aria-expanded="false" aria-controls="menuInventario">
@@ -65,10 +55,11 @@
                 </a>
                 <div class="collapse" id="menuInventario" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                     <nav class="sb-sidenav-menu-nested nav">
-                        <a class="nav-link" href="layout-static.html">Crear</a>
-                        <a class="nav-link" href="layout-sidenav-light.html">Listar</a>
+                        <a class="nav-link" href="layout-static.html">Agregar Producto</a>
+                        <a class="nav-link" href="layout-sidenav-light.html">Listar Inventario</a>
                     </nav>
                 </div>
+                {% endif %}
 
                
 
