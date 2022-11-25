@@ -8,7 +8,7 @@ from aplicaciones.inventario_stock.models import Calidad
 from aplicaciones.inventario_stock.api.serializers import JugadaSerializer
 
 @api_view(['GET','POST'])
-def Calidad_api_view(request):
+def inventario_api_view(request):
 
 
     if request.method == 'GET':

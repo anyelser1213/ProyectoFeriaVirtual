@@ -107,8 +107,8 @@ class Contrato_productor(models.Model):
 
     class Meta:
 
-        verbose_name = "Contrato Vigente"
-        verbose_name_plural = "Contratos Vigentes"
+        verbose_name = "Contrato Productor"
+        verbose_name_plural = "Contratos productores"
 
         permissions = [
             #(Lo que se guarda en bases de datos, lo que se ve al usuario)
@@ -137,6 +137,22 @@ class Contrato_cliente(models.Model):
     estado_contrato = models.CharField("estatus",max_length=150,choices=status,default='caducado',blank=True, null=True)
     fecha_caducidad = models.DateField(auto_now_add=False,auto_now=False,blank=True) #Solo fecha
 
+    class Meta:
+
+        verbose_name = "Contrato Cliente"
+        verbose_name_plural = "Contratos Clientes"
+
+        permissions = [
+            #(Lo que se guarda en bases de datos, lo que se ve al usuario)
+            
+            #Permisos para iniciar y consultar jugadas
+            #("iniciarjugada", "IniciarJugada"),
+            #("consultarjugada", "ConsultarJugada"),
+
+            #Para ver los informes
+            #("informejugada", "InformeJugada"),
+
+        ]#Fin de los permisos
 
 
 

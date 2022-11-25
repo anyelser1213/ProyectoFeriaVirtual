@@ -2,14 +2,15 @@ from django.urls import path
 from django.conf import settings
 from django.conf.urls.static import static
 
-from . import views
+from . import views as VistasUsuario
 
 app_name ="usuarios"
 
 urlpatterns = [
 
 
-    #path('', views.Index.as_view(), name='index'),
+    path('perfil', VistasUsuario.Perfil_Usuario.as_view(), name='perfil'),
+    #path('login/', vistasLogin.Login.as_view() ,name="login"),
     
     #path('', views.index.as_view() ,name="index"),
 

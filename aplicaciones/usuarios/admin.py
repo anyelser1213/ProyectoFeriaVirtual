@@ -7,8 +7,8 @@ from .models import *
 
 #Con esto modificamos los titulos en el admin de django
 admin.site.site_header = 'Ventas'
-admin.site.index_title = 'Sistema de Ventas Ecuador'
-admin.site.site_title = 'Ventasas'
+admin.site.index_title = 'Sistema de Ventas Maipo Grande'
+admin.site.site_title = 'Ventas'
 
 class UserAdmin(BaseUserAdmin):
     
