@@ -21,7 +21,7 @@
 {% block menu_lateral %}
 
         <!--Aqui se incluye el menu superior-->
-        {% include "menulateral.html" with person="Jane" %}
+        {% include "menulateral.html" with person=user.username %}
             
 {% endblock%}
 
@@ -30,44 +30,53 @@
                 <div id="layoutSidenav_content">
                     <main>
                         <div class="container-fluid px-4">
-                            <h1 class="mt-4">Usuario</h1>
+                            <h1 class="mt-4">Perfil de usuario</h1>
                             <ol class="breadcrumb mb-4">
                             </ol>
                             
                             <div class="card mb-4">
-                                <div class="card-header">
-                                    <i class="fas fa-table me-1"></i>
-                                    Crear Calidad
-                                </div>
                                 <div class="card-body">
 
-                                    
-                                    <form method="post">
-                                        {% csrf_token %}
-                                        <div class="row g-3 align-items-center">
-                                            <div class="col-auto">
-                                              <label for="inputText" class="col-form-label">Nombre</label>
-                                            </div>
-                                            <div class="col-auto">
-                                                {{ form.nombre }}
-                                             </div>
-                                            <div class="col-auto">
-                                                <!--
-                                                    <span id="passwordHelpInline" class="form-text">
-                                                Debe tener entre 8 y 20 caracteres.
-                                              </span>
-                                                -->
-                                                <div class="col-auto">
-                                                    <span id="passwordHelpInline" class="form-text">
-                                                        <input type="submit" class="btn btn-warning" value="Crear">
-                                                    </span>
-                                                  </div>
-                                              
-                                            </div>
-                                        </div>
-                                        
+                                    <div class="col-12 botones">
+                                        <h4>
+                                             <b class="font-weight-bold text-dark">Informacion</b>
+                                              <i class="fas fa-hashtag"></i>
+                                              <!--<b class="font-weight-bold text-danger">{{departamento.id}}</b>-->
+                                              <div class="btn-group float-right" role="group" aria-label="Basic mixed styles example">
+                                                <button type="button" class="btn btn-danger "><i class="fas fa-print"></i>  Imprimir</button>
+                                                <button type="button" class="btn btn-warning"><i class="fa fa-edit"></i>  Editar</button>
+                                              </div>
+                                        </h4>
+                                  </div>
+
+
+                                  <div class="row invoice-info">
+                                    <div class="col-sm-12 invoice-col">
+                                        <address>
                                             
-                                    </form>
+                                                <p>Nombre de Usuario: {{user.username}}</p>
+                                                <p>Rol: {{usuario.rol}}</p>
+                                                <p>Contrato Actual: {{contrato.estado_contrato}}</p>
+                                                <p>Fecha de caducidad del contrato : {{contrato.fecha_caducidad}}</p>
+                                               
+                                        </address>
+                      
+                            
+                                    </div>
+                                </div>
+
+                                <!--
+                                <div class="row">
+                                      <div class="col-md-6">
+                                        <br>
+                                           <h5><b class="font-weight-bold text-dark">Descripción:</b></h5>
+                                           <br>
+                                            <h5 class="text-danger text-bold"> {{departamento.nombre}}</h5>
+                                      </div>   
+                                      
+                                      
+                                </div>
+                                -->
 
                                 </div>
                             </div>
@@ -76,7 +85,7 @@
                     <footer class="py-4 bg-light mt-auto">
                         <div class="container-fluid px-4">
                             <div class="d-flex align-items-center justify-content-between small">
-                                <div class="text-muted">Copyright &copy; Your Website 2022</div>
+                                <div class="text-muted">Copyright &copy; Maipo Grande 2022</div>
                                 <div>
                                     <a href="#">Privacy Policy</a>
                                     &middot;

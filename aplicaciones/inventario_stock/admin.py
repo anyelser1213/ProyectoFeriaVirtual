@@ -8,5 +8,6 @@ admin.site.register(Contrato_productor)
 admin.site.register(Contrato_cliente)
 admin.site.register(Producto)
 
+admin.site.register(Peticion_cliente)
 
 admin.site.register(Inventario)

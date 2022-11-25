@@ -130,7 +130,7 @@ class Usuarios(AbstractBaseUser,PermissionsMixin):
     ultimo_ingreso = models.DateTimeField('actualizado', auto_now=True)
     direccion = models.CharField("Direccion",max_length=100,blank=True, null=True,default="Las Adjuntas") 
      
-    rol = models.CharField("Rol",max_length=150,choices=rol,default='cliente',blank=True, null=True)
+    rol = models.CharField("Rol",max_length=150,choices=rol,default='cliente_E',blank=True, null=True)
     #rol = models.ForeignKey(Rol,on_delete=models.CASCADE,blank=False, null=True)
     #rol = models.CharField("Rol",max_length=150,choices=usuario_tipos,default='cliente',blank=True, null=True)
 

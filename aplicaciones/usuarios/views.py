@@ -1,4 +1,9 @@
-from django.shortcuts import render
+from django.http import HttpResponse, HttpResponseRedirect
+from django.shortcuts import render, redirect
+from aplicaciones.inventario_stock.models import Contrato_productor
+
+#Clases para las plantillas
+from django.views.generic import View,TemplateView, CreateView, UpdateView, DetailView, ListView, DeleteView
 
 # Create your views here.
 
@@ -14,15 +19,9 @@ class Perfil_Usuario(TemplateView):
 
         else:
 
-            print("usuario permisos: ",request.user.get_all_permissions())
             print("Estas autenticado GENIAL")
-           
-
+            print("usuario permisos: ",request.user.get_all_permissions())
             
-
-
-            #print("usuario permisos: ",request.user.get_all_permissions())
-            #print(request.user.has_perm('src.ver_zulia'))
             
 
 
@@ -60,7 +59,9 @@ class Perfil_Usuario(TemplateView):
         #context['informacion'] = "Hola..."
 
        
-        context['usuario'] = self.request.user.username
+        context['usuario'] = self.request.user
+        context['contrato'] = Contrato_productor.objects.get(productor=self.request.user)
+        print("en contextos:",context['contrato'])
         return context
 
  

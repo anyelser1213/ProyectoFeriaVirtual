@@ -56,17 +56,20 @@ class Inventario(models.Model):
 
 class Peticion_cliente(models.Model):
 
-    status = [
+    status_peticion = [
         ('revision','Revisión'),
-        ('aprobada','Aprovada'),
+        ('aprobada','Aprobada'),
         ('oferta','Oferta'),
+        ('preceso','En proceso de atención'),
         ('atendida','Atendida'),
         ('cancelada','Cancelada'),
     ]
 
     id = models.AutoField(primary_key=True)
-    cliente = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE,blank=True, null=True)
-    estado_peticion = models.CharField("estado",max_length=150,choices=status,default='revision',blank=True, null=True)
+    cliente = models.ForeignKey(settings.AUTH_USER_MODEL,related_name="cliente_peticion", on_delete=models.CASCADE,blank=True, null=True)
+    productor_elegido = models.ForeignKey(settings.AUTH_USER_MODEL,related_name="productor_peticion", on_delete=models.CASCADE,blank=True, null=True)
+    aprobado_por = models.ForeignKey(settings.AUTH_USER_MODEL,related_name="aprobado_por", on_delete=models.CASCADE,blank=True, null=True)
+    estado_peticion = models.CharField("estado",max_length=150,choices=status_peticion,default='revision',blank=True, null=True)
     #fecha_caducidad = models.DateField(auto_now_add=False,auto_now=False,blank=True) #Solo fecha
 
     def __str__(self):
