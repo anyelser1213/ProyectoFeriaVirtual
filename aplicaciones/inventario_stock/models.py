@@ -5,37 +5,6 @@ from django.conf import settings
 # Create your models here.
 '''
 
-
-
-#el proveedor es para saber quien nos da el producto
-class Productor(models.Model):
-    id = models.AutoField(primary_key=True)
-    nombre = models.CharField(max_length=100,unique=True)
-    rif = models.CharField(max_length=100,unique=True)
-    direccion = models.CharField(max_length=100)
-    telefono = models.CharField(max_length=100)
-
-
-
-
-
-    
-    nombre = models.CharField(max_length=100)
-    cedula = models.PositiveIntegerField(unique=True)
-    direccion = models.CharField(max_length=100,blank=True, null=True)
-    telefono = models.CharField(max_length=100,blank=True, null=True)
-   
-
-
-
-
-#el stock es para saber cuantos productos tenemos disponibles
-class Stock(models.Model):
-    id = models.AutoField(primary_key=True)
-    nombre = models.CharField(max_length=100,unique=True)
-    producto_id = models.ForeignKey("Producto", on_delete=models.CASCADE)
-    cantidad = models.PositiveIntegerField (default=0,null=False)
-
 #el inventario es para saber los patrimonios de la empresa
 class Inventario(models.Model):
 
@@ -60,10 +29,11 @@ class Peticion_cliente(models.Model):
         ('revision','Revisión'),
         ('aprobada','Aprobada'),
         ('oferta','Oferta'),
-        ('preceso','En proceso de atención'),
+        ('proceso','En proceso de atención'),
         ('atendida','Atendida'),
         ('cancelada','Cancelada'),
     ]
+    
 
     id = models.AutoField(primary_key=True)
     cliente = models.ForeignKey(settings.AUTH_USER_MODEL,related_name="cliente_peticion", on_delete=models.CASCADE,blank=True, null=True)

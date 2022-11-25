@@ -29,8 +29,8 @@ urlpatterns = [
 
     path('', include(('aplicaciones.base_principal.urls'))),
     path('', include(('aplicaciones.inventario_stock.urls'))),
-    path('',include(('aplicaciones.usuarios.urls'))),
-    path('',include(('aplicaciones.login.urls'))),
+    path('', include(('aplicaciones.usuarios.urls'))),
+    path('', include(('aplicaciones.login.urls'))),
     #path('logout/', vistaLogin.Logout.as_view() ,name="logout"),
     
 ]

@@ -20,13 +20,7 @@ class Perfil_Usuario(TemplateView):
         else:
 
             print("Estas autenticado GENIAL")
-            print("usuario permisos: ",request.user.get_all_permissions())
-            
-            
-
-
-
-            
+            #print("usuario permisos: ",request.user.get_all_permissions())
             #Aqui verificamos si el usuario esta activo para que ingrese
             ''' 
             if request.user.activo:   
@@ -36,18 +30,6 @@ class Perfil_Usuario(TemplateView):
                 messages.add_message(request, messages.INFO, "Usuario Inactivo")
                 return redirect("src:logout")
             '''
-
-            #return redirect("src:index")
-            #print("Usuario ",request.user)
-
-            #Esto es algo que podria funcionar en algun momento
-            #grupo="prueba"
-            #print('Proyecto %s' % (grupo))
-
-            
-
-            
-            #empresa_creada = Empresa.objects.filter(creado_por_id=request.user.id)
 
 
         return super().dispatch(request, *args, **kwargs)
