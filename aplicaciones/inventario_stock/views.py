@@ -21,7 +21,7 @@ class ProductosCrear(CreateView):
     model = Producto  
     form_class = ProductoForm
     template_name = "inventario_stock/productos/productos-crear.html"
-    success_url = reverse_lazy('base_principal:index')
+    success_url = reverse_lazy('inventario_stock:ProductoListar')
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)

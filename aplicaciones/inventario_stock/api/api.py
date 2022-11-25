@@ -25,11 +25,12 @@ def Calidad_api_view(request):
 
         #print("El tipo de dato es: ",type(datos))
 
-        return JsonResponse(datos,safe = False)
+        return JsosResponse(datos,safe = False)
         #return HttpResponse(json.dumps(data), content_type = "application/json")
-        
+        """
         data={'uno':1,'dos':2}
         return JsonResponse(data,safe = False)
+        
         
         if jugada_serializer.is_valid(): #Verificamos que la data es correcta
             #jugada_serializer.save() #Guardamos la data en base de datos
@@ -37,7 +38,7 @@ def Calidad_api_view(request):
         else:
             return Response(jugada_serializer.errors)
         print(request.data)
-
+        """
 
 
 """
