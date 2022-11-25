@@ -10,8 +10,8 @@ urlpatterns = [
     
 
     
-    path('ProductorCrear/', vistasInventarioStock.ProductoresCrear.as_view() ,name="ProductoresCrear"),
-    #path('CalidadListar/', vistasInventarioStock.CalidadListar.as_view() ,name="CalidadListar"),
+    path('ProductoCrear/', vistasInventarioStock.ProductosCrear.as_view() ,name="ProductosCrear"),
+    path('ProductoListar/', vistasInventarioStock.Productoslistar.as_view() ,name="ProductoListar"),
 
     
 

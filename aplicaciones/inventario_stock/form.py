@@ -9,15 +9,15 @@ from aplicaciones.inventario_stock.models import *
 
 
 ###################### AQUI COMIENZAN LOS FORMULARIOS PARA TODO DE INVENTARIO ##########################################
-'''
-class CalidadForm(ModelForm):
+
+class ProductoForm(ModelForm):
 
 
     def __init__(self, *args, **kwargs):
         #usuario_id = kwargs.pop('usuario')
         #self.usuarioID = kwargs.pop('user')
-        super(CalidadForm, self).__init__(*args, **kwargs)
-        print("Formulario CalidadForm: \n")
+        super(ProductoForm, self).__init__(*args, **kwargs)
+        print("Formulario ProductoForm: \n")
         #print("usuario: ",self.usuarioID)
         #print("usuario ID: ",self.usuarioID.id)
 
@@ -28,10 +28,10 @@ class CalidadForm(ModelForm):
 
     class Meta:
 
-        model = Calidad
+        model = Producto
         fields = "__all__"
         widgets = {
-            "nombre": forms.TextInput(attrs={'class': 'form-control','placeholder':'Ingresa nombre de calidad'}),
+            "nombre": forms.TextInput(attrs={'class': 'form-control','placeholder':'Ingresa nombre de producto'}),
             #"direccion": forms.TextInput(attrs={'class': 'form-control','placeholder':'Enter company address'}),
             #"descripcion": forms.Textarea(attrs={'class': 'form-control border-input','rows':'3','placeholder':'Enter company information'}),
             #"sitio_web": forms.TextInput(attrs={'class': 'form-control border-input','rows':'3','placeholder':'Enter website'}),
@@ -43,4 +43,3 @@ class CalidadForm(ModelForm):
         }
 
 
-'''

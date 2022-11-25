@@ -1,3 +1,4 @@
+from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render, redirect
 from django.views.generic.edit import CreateView
 from django.views.generic import ListView
@@ -5,7 +6,7 @@ from aplicaciones.inventario_stock.form import * #CalidadForm
 from aplicaciones.inventario_stock.models import *
 
 #Clases para las plantillas
-from django.views.generic import TemplateView, CreateView, UpdateView, DetailView, ListView, DeleteView
+from django.views.generic import View,TemplateView, CreateView, UpdateView, DetailView, ListView, DeleteView
 
 from django.urls import reverse, reverse_lazy
 
@@ -15,9 +16,57 @@ from aplicaciones.usuarios.form import NewUserForm
 # Create your views here.
 
 
-class ProductoresCrear(TemplateView):
+class ProductosCrear(CreateView):
 
-    template_name = "inventario_stock/productores/productores-crear.html"
+    model = Producto  
+    form_class = ProductoForm
+    template_name = "inventario_stock/productos/productos-crear.html"
+    success_url = reverse_lazy('base_principal:index')
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['informacion'] = "Hola..."
+        context['titulo'] = "Crear Productos"
+        context['usuario'] = self.request.user
+        return context
+
+    def post(self,request,*args,**kwargs):
+        
+        print("entrando en post")
+
+        form = ProductoForm(request.POST)
+        if form.is_valid():
+            form.save()#Guardamos el objeto
+            return HttpResponseRedirect(self.success_url)
+
+        #En caso de que no se cree el self.object se coloca en None
+        self.object = None
+        print(form.errors)
+
+        #Aqui llamamos a todas las variables establecidas en get_context
+        context = self.get_context_data(**kwargs)
+        context['form'] = form
+
+        #Asi es otra forma de enviar el contexto
+        return render(request,self.template_name,context)
+        
+        #Asi es una forma de enviar
+        #return render(request,self.template_name,{"form":form})
+
+
+class Productoslistar(ListView):
+
+    model = Producto  
+    #form_class = ProductoForm
+    context_object_name = 'productos'
+    template_name = "inventario_stock/productos/productos-listar.html"
+    success_url = reverse_lazy('base_principal:index')
+
+"""
+class ProductosCrear(CreateView):
+
+
+    template_name = "inventario_stock/productos/productos-crear.html"
 
     def dispatch(self, request, *args, **kwargs):
 
@@ -30,7 +79,7 @@ class ProductoresCrear(TemplateView):
             #print("usuario permisos: ",request.user.get_all_permissions())
             print("Estas autenticado GENIAL")
             #if request.user.has_perm('juegos.iniciarjugada'):
-            print("Entramos en CalidadCrear")
+            print("Entramos en ProductosCrear")
 
                 #jugada1 = Jugada.objects.first()
                 #telefono1 = Telefono.objects.first()
@@ -62,12 +111,6 @@ class ProductoresCrear(TemplateView):
                 return redirect("src:logout")
             '''
 
-            #return redirect("src:index")
-            #print("Usuario ",request.user)
-
-            #Esto es algo que podria funcionar en algun momento
-            #grupo="prueba"
-            #print('Proyecto %s' % (grupo))
 
             
 
@@ -82,12 +125,76 @@ class ProductoresCrear(TemplateView):
 
         context = super().get_context_data(**kwargs)
         #context['informacion'] = "Hola..."
-        context['formProductor'] = NewUserForm()
+        context['formProducto'] = ProductoForm()
         context['usuario'] = self.request.user.username
         return context
 
+    def get_form_kwargs(self, *args, **kwargs):
+        
+        kwargs = super(ProductosCrear, self).get_form_kwargs(*args, **kwargs)
+        #kwargs['user'] = self.request.user
+
+        print("Pasamos por la funcion get_form_kwargs linea 251")
+        return kwargs
+    
+
+    ############# METODO POST ############################
+    def post(self, request, *args, **kwargs):
+
+        print("Entramos en POST de ProductoCrear")
+        print("\n\n")
+        print(request.POST)
+        print("\n\n")
+        #print(request.FILES)
+        print()
+        #form = self.form_class(request.POST,request.FILES, user=self.request.user)
+        form = ProductosCrear()
+
+        if 1==1:
+        #if form.is_valid():
+        
+        #    print("Fue valido la empresa...")
+        
+        #    producto = form.save()
+
+        #    print("Este formulario de producto es valido")
+            #titulosVideos = request.POST.getlist('titulo_video_empresa')
+            #descripcionVideos = request.POST.getlist('descripcion_video_empresa')
+            #listaVideosEmpresa = request.FILES.getlist('videos')#Para obtener una lista de sus valores
+            
 
 
+
+
+
+
+            contexto = {
+                'fromProducto':ProductoForm()
+            }
+
+            #Aqui incluimos los otros contextos 
+            #contexto.update(contextoVideoEmpresa)
+            #contexto.update(contextoEquipoEmpresa)
+            #contexto.update(contextoPremiosEmpresa)
+
+            print("El contexto es: ", contexto)
+            return render(request,"inventario_stock/productos/productos-crear.html",contexto)
+            #return HttpResponseRedirect('/pruebas/')
+
+
+        else:
+            
+            print("NO Fue valido la vaina...")
+                    
+            contexto = {
+                'fromProducto':ProductoForm()
+            }
+
+            #Para probar las cosas
+            return render(request,"inventario_stock/productos/productos-crear.html",contexto)
+
+
+"""
 
 '''
 class CalidadCrear(CreateView):
@@ -114,3 +221,23 @@ class CalidadListar(ListView):
 
 
 '''
+
+
+
+
+#Vista basada en funciones que usaremos despues
+"""
+
+def myview(request):
+    if request.method == "POST":
+        form = MyForm(request.POST)
+        if form.is_valid():
+            # <process form cleaned data>
+            return HttpResponseRedirect('/success/')
+    else:
+        form = MyForm(initial={'key': 'value'})
+
+    return render(request, 'form_template.html', {'form': form})
+
+
+"""
