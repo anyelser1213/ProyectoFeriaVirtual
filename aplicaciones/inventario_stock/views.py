@@ -64,9 +64,9 @@ class Productoslistar(ListView):
 
 
 
-class ProductosCrear(CreateView):
+class Inventario_asignar(CreateView):
 
-    model = Producto  
+    model = Inventario  
     form_class = ProductoForm
     template_name = "inventario_stock/productos/productos-crear.html"
     success_url = reverse_lazy('inventario_stock:ProductoListar')

@@ -17,7 +17,7 @@ class UserAdmin(BaseUserAdmin):
     #Aqui es cuando se va a editar
     fieldsets = (
         #Aqui es para editar
-        ("Informacion Esencial", {'fields': ('username','rol', 'password')}),
+        ("Informacion Esencial", {'fields': ('username','rol','nacionalidad', 'password')}),
         ("Permisologia", {
             'classes': ('wide',),
             'fields': ('is_superuser','admin','activo','groups','user_permissions'),
@@ -28,7 +28,7 @@ class UserAdmin(BaseUserAdmin):
     add_fieldsets = (
         ("Informacion Obligatoria", {
             'classes': ('wide',),
-            'fields': ('username','email','rol', 'password1', 'password2'),
+            'fields': ('username','email','rol','nacionalidad', 'password1', 'password2'),
         }),
         ("Informacion Importante", {
             'classes': ('wide',),
@@ -43,9 +43,9 @@ class UserAdmin(BaseUserAdmin):
 
 
     #Para indicarle al admin que campos queremos mostrar
-    list_display = ('id','username', 'email','is_superuser','admin','rol','activo','fecha_creacion','ultimo_ingreso')
+    list_display = ('id','username', 'email','is_superuser','admin','rol','nacionalidad','activo','fecha_creacion','ultimo_ingreso')
     #list_display = ('username', 'email','is_superuser','admin','rol','plan_elegido')
-    list_filter = ('username','email','activo','rol')
+    list_filter = ('username','email','activo','rol','nacionalidad')
     
     #Para especificar que campos van a efectuar la busqueda
     search_fields = ('username', 'nombres', 'apellidos', 'email')

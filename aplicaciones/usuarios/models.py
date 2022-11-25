@@ -105,10 +105,17 @@ class Usuarios(AbstractBaseUser,PermissionsMixin):
         ('master','Master'),
         ('administrador','Administrador'),
         ('productor','Productor'),
-        ('cliente_E','Cliente Externo'),
-        ('cliente_I','Cliente Interno'),
+        #('cliente_E','Cliente Externo'),
+        #('cliente_I','Cliente Interno'),
+        ('cliente','Cliente'),
         ('transportista','transportista'),
         ('consultor','consultor'),
+    ]
+
+    nacionalidad = [
+        
+        ('chileno','Chileno'),
+        ('extranjero','Extranjero'),
     ]
 
     #tipo_plan = [
@@ -131,6 +138,7 @@ class Usuarios(AbstractBaseUser,PermissionsMixin):
     direccion = models.CharField("Direccion",max_length=100,blank=True, null=True,default="Las Adjuntas") 
      
     rol = models.CharField("Rol",max_length=150,choices=rol,default='cliente_E',blank=True, null=True)
+    nacionalidad = models.CharField("Nacionalidad",max_length=150,choices=nacionalidad,default='chileno',blank=True, null=True)
     #rol = models.ForeignKey(Rol,on_delete=models.CASCADE,blank=False, null=True)
     #rol = models.CharField("Rol",max_length=150,choices=usuario_tipos,default='cliente',blank=True, null=True)
 
@@ -196,9 +204,8 @@ class Usuarios(AbstractBaseUser,PermissionsMixin):
 
             Grupo_administrador = Group.objects.create(name="administrador")
             Grupo_productor = Group.objects.create(name="productor") #Permisos solo para productor
-            Grupo_cliente_interno = Group.objects.create(name="cliente_I") #Permisos solo para clientes interno(nacionales)
-            Grupo_cliente_externo = Group.objects.create(name="cliente_E") #Permisos solo para clientes externo(internacionales)
-
+            Grupo_cliente= Group.objects.create(name="cliente") #Permisos solo para clientes
+            
             Grupo_administrador.permissions.set(list(Permission.objects.all())) #Todos los permisos
             Grupo_productor.permissions.add(
                                 Permission.objects.get(name="Can add inventario"),
@@ -210,10 +217,7 @@ class Usuarios(AbstractBaseUser,PermissionsMixin):
                                 Permission.objects.get(name="Can delete producto"),
                                 Permission.objects.get(name="Can view producto"),
             )
-            Grupo_cliente_interno.permissions.add(
-                                Permission.objects.get(name="Peticiones"),
-            )
-            Grupo_cliente_externo.permissions.add(
+            Grupo_cliente.permissions.add(
                                 Permission.objects.get(name="Peticiones"),
             )
             

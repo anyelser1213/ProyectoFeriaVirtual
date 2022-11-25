@@ -3,25 +3,6 @@ from django.conf import settings
 #from aplicaciones.usuarios.models import Usuarios
 
 # Create your models here.
-'''
-
-#el inventario es para saber los patrimonios de la empresa
-class Inventario(models.Model):
-
-    #(Lo que se guarda en bases de datos, lo que se ve al usuario)
-    status_producto = [
-        ('vendido','Vendido'),
-        ('danado','Dañado'),
-        ('disponible','Disponible'),
-    ]
-
-    id = models.AutoField(primary_key=True)
-    producto_id = models.ForeignKey("Producto", on_delete=models.CASCADE)
-    ubicacion_id = models.ForeignKey("Ubicacion", on_delete=models.CASCADE)
-    status = models.CharField("status",max_length=150,choices=status_producto,default='disponible',blank=True, null=True)
-
-    
- '''
 
 class Peticion_cliente(models.Model):
 
@@ -63,7 +44,8 @@ class Peticion_cliente(models.Model):
         ]#Fin de los permisos
 
 
-class Contrato_productor(models.Model):
+#Estos contratos pueden ser para productores o clientes
+class Contrato(models.Model):
 
     status = [
         ('vigente','Vigente'),
@@ -71,17 +53,17 @@ class Contrato_productor(models.Model):
     ]
 
     id = models.AutoField(primary_key=True)
-    productor = models.ForeignKey(settings.AUTH_USER_MODEL,related_name="productor", on_delete=models.CASCADE,blank=True, null=True)
+    usuario = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE,blank=True, null=True)
     estado_contrato = models.CharField("estatus",max_length=150,choices=status,default='caducado',blank=True, null=True)
     fecha_caducidad = models.DateField(auto_now_add=False,auto_now=False,blank=True) #Solo fecha
 
     def __str__(self):
-         return "Productor: "+str(self.productor.username)+", Estatus: "+str(self.estado_contrato)
+         return "Usuario: "+str(self.usuario.username)+", Estatus: "+str(self.estado_contrato)
 
     class Meta:
 
-        verbose_name = "Contrato Productor"
-        verbose_name_plural = "Contratos productores"
+        verbose_name = "Contrato"
+        verbose_name_plural = "Contratos"
 
         permissions = [
             #(Lo que se guarda en bases de datos, lo que se ve al usuario)
@@ -96,7 +78,7 @@ class Contrato_productor(models.Model):
         ]#Fin de los permisos
 
 
-
+"""
 class Contrato_cliente(models.Model):
 
     status = [
@@ -126,7 +108,7 @@ class Contrato_cliente(models.Model):
             #("informejugada", "InformeJugada"),
 
         ]#Fin de los permisos
-
+"""
 
 
 

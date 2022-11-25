@@ -1,6 +1,6 @@
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render, redirect
-from aplicaciones.inventario_stock.models import Contrato_productor
+from aplicaciones.inventario_stock.models import Contrato
 
 #Clases para las plantillas
 from django.views.generic import View,TemplateView, CreateView, UpdateView, DetailView, ListView, DeleteView
@@ -42,7 +42,7 @@ class Perfil_Usuario(TemplateView):
 
        
         context['usuario'] = self.request.user
-        context['contrato'] = Contrato_productor.objects.get(productor=self.request.user)
+        context['contrato'] = Contrato.objects.get(usuario=self.request.user)
         print("en contextos:",context['contrato'])
         return context
 
