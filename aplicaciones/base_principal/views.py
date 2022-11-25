@@ -26,23 +26,24 @@ class Index(TemplateView):
         else:
 
             print("Estas autenticado GENIAL")
-            print("Permisos: ",list(Permission.objects.all()))
+            #print("Permisos: ",list(Permission.objects.all()))
             print("usuario: ",request.user," Cantidad de Grupos: ",Group.objects.all().count())
 
-            GCliente = Group.objects.get(name="cliente_E")
+            #GCliente = Group.objects.get(name="cliente_E")
 
             print("\n\n")
             #print("\n\nPermisos Grupo Productor: ",GProductor.permissions.all() )
-            for elemento in GCliente.permissions.all():
-                print(elemento.name)
-            print("\n\n")
+            #for elemento in GCliente.permissions.all():
+            #    print(elemento.name)
+            #print("\n\n")
 
             #Grupo_productor.permissions.set(Permission.objects.get(name="Can add inventario"),
             print("administrador:",request.user.groups.filter(name='administrador').exists())
             print("productor:",request.user.groups.filter(name='productor').exists())
-            print("cliente:",request.user.groups.filter(name='cliente').exists())
+            print("cliente Externo:",request.user.groups.filter(name='cliente_E').exists())
+            print("cliente Interno:",request.user.groups.filter(name='cliente_I').exists())
             print("\n\n")
-            print("usuario permisos: ",request.user.get_all_permissions())
+            #print("usuario permisos: ",request.user.get_all_permissions())
             #print(request.user.has_perm('src.ver_zulia'))
             #print("uSUARIO : ",request.user.has_module_perms())
             
