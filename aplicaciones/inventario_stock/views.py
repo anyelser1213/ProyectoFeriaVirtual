@@ -71,23 +71,28 @@ class Productoslistar(ListView):
 
 class PeticionCrear(CreateView):
 
-    model = Producto  
-    form_class = ProductoForm
+    model = Peticion  
+    form_class = PeticionForm
     template_name = "inventario_stock/peticiones/peticiones-crear.html"
     success_url = reverse_lazy('inventario_stock:ProductoListar')
+
+    #Para enviar argumentos al formulario
+    def get_form_kwargs(self):
+        kwargs = super(PeticionCrear, self).get_form_kwargs()
+        kwargs['usuario'] = self.request.user
+        return kwargs
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['informacion'] = "Hola..."
         context['titulo'] = "Crear Petición"
-        context['usuario'] = self.request.user
         return context
 
     def post(self,request,*args,**kwargs):
         
         print("entrando en post")
 
-        form = ProductoForm(request.POST)
+        form = PeticionForm(request.POST)
         if form.is_valid():
             form.save()#Guardamos el objeto
             return HttpResponseRedirect(self.success_url)
@@ -109,6 +114,11 @@ class PeticionCrear(CreateView):
 
 #############################################################################################
 
+
+
+
+
+#################### PARA INVENTARIO #############################
 
 class Inventario_asignar(CreateView):
 

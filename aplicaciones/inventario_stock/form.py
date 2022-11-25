@@ -5,6 +5,7 @@ from django.core.exceptions import ValidationError
 from django.db.models import fields
 from django.forms import ClearableFileInput, ModelForm, widgets
 from aplicaciones.inventario_stock.models import *
+from aplicaciones.usuarios.models import *
 
 
 
@@ -46,15 +47,15 @@ class PeticionForm(ModelForm):
 
 
     def __init__(self, *args, **kwargs):
-        #usuario_id = kwargs.pop('usuario')
-        #self.usuarioID = kwargs.pop('user')
+        self.usuario = kwargs.pop('usuario',None)
+        #self.usuarioID = kwargs.pop('user',None)
         super(PeticionForm, self).__init__(*args, **kwargs)
         print("Formulario PeticionForm: \n")
-        #print("usuario: ",self.usuarioID)
+        print("usuario : ",self.usuario)
         #print("usuario ID: ",self.usuarioID.id)
 
-        #self.fields['creado_por'].empty_label = None
-        #self.fields['creado_por'].queryset = Usuarios.objects.filter(id=self.usuarioID.id)
+        self.fields['cliente'].empty_label = None
+        self.fields['cliente'].queryset = Usuarios.objects.filter(id=self.usuario.id)
 
         #self.fields['imagen'].widget.attrs.update({'class': 'form-control ' })
 
@@ -63,7 +64,7 @@ class PeticionForm(ModelForm):
         model = Peticion
         fields = "__all__"
         widgets = {
-            "nombre": forms.TextInput(attrs={'class': 'form-control','placeholder':'Ingresa nombre de producto'}),
+            #"nombre": forms.TextInput(attrs={'class': 'form-control','placeholder':'Ingresa nombre de producto'}),
             #"direccion": forms.TextInput(attrs={'class': 'form-control','placeholder':'Enter company address'}),
             #"descripcion": forms.Textarea(attrs={'class': 'form-control border-input','rows':'3','placeholder':'Enter company information'}),
             #"sitio_web": forms.TextInput(attrs={'class': 'form-control border-input','rows':'3','placeholder':'Enter website'}),
@@ -71,7 +72,8 @@ class PeticionForm(ModelForm):
             #"imagenEmpresa": forms.ImageField(attrs={'class': 'form-control','placeholder':'Enter department image'}),
             #"imagenEmpresa":forms.ClearableFileInput(attrs={'class': 'form-control oculto','placeholder':'Enter company image'}),
             #"videoEmpresa": forms.ClearableFileInput(attrs={'class': 'form-control oculto','placeholder':'Enter company video','accept':'video/*'}),
-            #"creado_por": forms.Select(attrs={'class': 'form-select','style': 'display:none'  }),
+            "cliente": forms.Select(attrs={'class': 'form-select','style': ''  }),#display:none
+            "estado_peticion": forms.Select(attrs={'class': 'form-select','style': ''  }),
         }
 
 class InventarioForm(ModelForm):
