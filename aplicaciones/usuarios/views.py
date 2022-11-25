@@ -42,7 +42,8 @@ class Perfil_Usuario(TemplateView):
 
        
         context['usuario'] = self.request.user
-        context['contrato'] = Contrato.objects.get(usuario=self.request.user)
+        #context['contrato'] = Contrato.objects.get(usuario=self.request.user)
+        context['contrato'] = "Sin contrato"
         print("en contextos:",context['contrato'])
         return context
 

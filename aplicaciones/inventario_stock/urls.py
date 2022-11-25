@@ -14,6 +14,11 @@ urlpatterns = [
     path('ProductoListar/', vistasInventarioStock.Productoslistar.as_view() ,name="ProductoListar"),
 
 
+    #Para las peticiones
+    path('PeticionCrear/', vistasInventarioStock.PeticionCrear.as_view() ,name="PeticionCrear"),
+    #path('PeticionListar/', vistasInventarioStock.Productoslistar.as_view() ,name="ProductoListar"),
+
+
     #Para el inventario
     path('Inventario_asignar/', vistasInventarioStock.Inventario_asignar.as_view() ,name="InventarioAsignar"),
     #path('ProductoListar/', vistasInventarioStock.Productoslistar.as_view() ,name="ProductoListar"),

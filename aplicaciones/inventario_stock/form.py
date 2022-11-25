@@ -42,7 +42,37 @@ class ProductoForm(ModelForm):
             #"creado_por": forms.Select(attrs={'class': 'form-select','style': 'display:none'  }),
         }
 
+class PeticionForm(ModelForm):
 
+
+    def __init__(self, *args, **kwargs):
+        #usuario_id = kwargs.pop('usuario')
+        #self.usuarioID = kwargs.pop('user')
+        super(PeticionForm, self).__init__(*args, **kwargs)
+        print("Formulario PeticionForm: \n")
+        #print("usuario: ",self.usuarioID)
+        #print("usuario ID: ",self.usuarioID.id)
+
+        #self.fields['creado_por'].empty_label = None
+        #self.fields['creado_por'].queryset = Usuarios.objects.filter(id=self.usuarioID.id)
+
+        #self.fields['imagen'].widget.attrs.update({'class': 'form-control ' })
+
+    class Meta:
+
+        model = Peticion
+        fields = "__all__"
+        widgets = {
+            "nombre": forms.TextInput(attrs={'class': 'form-control','placeholder':'Ingresa nombre de producto'}),
+            #"direccion": forms.TextInput(attrs={'class': 'form-control','placeholder':'Enter company address'}),
+            #"descripcion": forms.Textarea(attrs={'class': 'form-control border-input','rows':'3','placeholder':'Enter company information'}),
+            #"sitio_web": forms.TextInput(attrs={'class': 'form-control border-input','rows':'3','placeholder':'Enter website'}),
+            #"color": forms.TextInput(attrs={'type': 'color', 'class':'form-control oculto2'}),
+            #"imagenEmpresa": forms.ImageField(attrs={'class': 'form-control','placeholder':'Enter department image'}),
+            #"imagenEmpresa":forms.ClearableFileInput(attrs={'class': 'form-control oculto','placeholder':'Enter company image'}),
+            #"videoEmpresa": forms.ClearableFileInput(attrs={'class': 'form-control oculto','placeholder':'Enter company video','accept':'video/*'}),
+            #"creado_por": forms.Select(attrs={'class': 'form-select','style': 'display:none'  }),
+        }
 
 class InventarioForm(ModelForm):
 

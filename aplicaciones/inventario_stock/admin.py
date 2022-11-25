@@ -7,7 +7,5 @@ from .models import *
 #admin.site.register(Contrato_productor)
 admin.site.register(Contrato)
 admin.site.register(Producto)
-
-admin.site.register(Peticion_cliente)
-
+admin.site.register(Peticion)
 admin.site.register(Inventario)

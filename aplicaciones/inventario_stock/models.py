@@ -4,7 +4,7 @@ from django.conf import settings
 
 # Create your models here.
 
-class Peticion_cliente(models.Model):
+class Peticion(models.Model):
 
     status_peticion = [
         ('revision','Revisión'),
@@ -78,37 +78,7 @@ class Contrato(models.Model):
         ]#Fin de los permisos
 
 
-"""
-class Contrato_cliente(models.Model):
 
-    status = [
-        ('vigente','Vigente'),
-        ('caducado','Caducado'),
-        ('finalizado','Finalizado'),
-    ]
-
-    id = models.AutoField(primary_key=True)
-    cliente = models.ForeignKey(settings.AUTH_USER_MODEL,related_name="cliente", on_delete=models.CASCADE,blank=True, null=True)
-    estado_contrato = models.CharField("estatus",max_length=150,choices=status,default='caducado',blank=True, null=True)
-    fecha_caducidad = models.DateField(auto_now_add=False,auto_now=False,blank=True) #Solo fecha
-
-    class Meta:
-
-        verbose_name = "Contrato Cliente"
-        verbose_name_plural = "Contratos Clientes"
-
-        permissions = [
-            #(Lo que se guarda en bases de datos, lo que se ve al usuario)
-            
-            #Permisos para iniciar y consultar jugadas
-            #("iniciarjugada", "IniciarJugada"),
-            #("consultarjugada", "ConsultarJugada"),
-
-            #Para ver los informes
-            #("informejugada", "InformeJugada"),
-
-        ]#Fin de los permisos
-"""
 
 
 
@@ -119,15 +89,6 @@ class Producto(models.Model):
 
     id = models.AutoField(primary_key=True)
     nombre = models.CharField(max_length=100,unique=True)
-    #calidad = models.CharField("calidad",max_length=150,choices=calidad_producto,default='baja',blank=True, null=True)
-    
-    #calidad_id = models.ForeignKey("Calidad", on_delete=models.CASCADE,blank=True, null=True)
-    #categoria_id = models.ForeignKey("Categoria", on_delete=models.CASCADE,blank=True, null=True)
-    #modelo_id = models.ForeignKey("Modelo", on_delete=models.CASCADE,blank=True, null=True)
-    #peso_id = models.ForeignKey("Peso", on_delete=models.CASCADE,blank=True, null=True)
-    #color_id = models.ForeignKey("Color", on_delete=models.CASCADE,blank=True, null=True)
-    #ubicacion_id = models.ForeignKey("Ubicacion", on_delete=models.CASCADE)
-    #proveedor_id = models.ForeignKey("Productor", on_delete=models.CASCADE) 
 
     def __str__(self):
         #return str(self.id_jugada)+" "+str(self.id_telefono)+" Usuario: "+str(self.id_usuario)
@@ -167,3 +128,63 @@ class Inventario(models.Model):
     def __str__(self):
         #return str(self.id_jugada)+" "+str(self.id_telefono)+" Usuario: "+str(self.id_usuario)
         return "id: "+str(self.id)+", Productor: "+str(self.productor_id.nombre)+",  "+str(self.producto_id)+", peso/cantidad:  "+str(self.peso_cantidad)+", Calidad: "+str(self.calidad)+", Precio:  "+str(self.precio)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#################################################################################################
+
+"""
+class Contrato_cliente(models.Model):
+
+    status = [
+        ('vigente','Vigente'),
+        ('caducado','Caducado'),
+        ('finalizado','Finalizado'),
+    ]
+
+    id = models.AutoField(primary_key=True)
+    cliente = models.ForeignKey(settings.AUTH_USER_MODEL,related_name="cliente", on_delete=models.CASCADE,blank=True, null=True)
+    estado_contrato = models.CharField("estatus",max_length=150,choices=status,default='caducado',blank=True, null=True)
+    fecha_caducidad = models.DateField(auto_now_add=False,auto_now=False,blank=True) #Solo fecha
+
+    class Meta:
+
+        verbose_name = "Contrato Cliente"
+        verbose_name_plural = "Contratos Clientes"
+
+        permissions = [
+            #(Lo que se guarda en bases de datos, lo que se ve al usuario)
+            
+            #Permisos para iniciar y consultar jugadas
+            #("iniciarjugada", "IniciarJugada"),
+            #("consultarjugada", "ConsultarJugada"),
+
+            #Para ver los informes
+            #("informejugada", "InformeJugada"),
+
+        ]#Fin de los permisos
+"""
+
+
+
+
+
+
