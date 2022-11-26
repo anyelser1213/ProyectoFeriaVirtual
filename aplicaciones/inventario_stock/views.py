@@ -183,7 +183,7 @@ class Inventariolistar(ListView):
 
     model = Inventario  
     #form_class = ProductoForm
-    context_object_name = 'inventario'
+    context_object_name = 'inventarios'
     template_name = "inventario_stock/inventario/inventario-listar.html"
     success_url = reverse_lazy('base_principal:index')
 
