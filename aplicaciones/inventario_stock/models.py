@@ -48,11 +48,11 @@ class Peticion(models.Model):
 
     aprobado_por = models.ForeignKey(settings.AUTH_USER_MODEL,related_name="aprobado_por", on_delete=models.CASCADE,blank=True, null=True)
     estado_peticion = models.CharField("estado",max_length=150,choices=status_peticion,default='revision',blank=True, null=True)
-    tipo_peticion = models.CharField("estado",max_length=150,choices=tipo_peticion,default='nacional',blank=True, null=True)
+    tipo_peticion = models.CharField("tipo",max_length=150,choices=tipo_peticion,default='nacional',blank=True, null=True)
     #fecha_caducidad = models.DateField(auto_now_add=False,auto_now=False,blank=True) #Solo fecha
 
     def __str__(self):
-         return "Peticion de : "+str(self.cliente.username)+" Producto: "+str(self.producto.nombre)+", Cantidad: "+str(self.cantidad)+"Kg"+", Estatus: "+str(self.estado_peticion)
+         return "Peticion de : "+str(self.cliente.username)+" Producto: "+str(self.producto.nombre)+", Cantidad: "+str(self.cantidad)+"Kg"+", Estatus: "+str(self.estado_peticion)+", Tipo: "+str(self.tipo_peticion)
 
     class Meta:
 

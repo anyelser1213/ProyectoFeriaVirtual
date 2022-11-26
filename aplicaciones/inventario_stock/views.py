@@ -74,7 +74,7 @@ class PeticionCrear(CreateView):
     model = Peticion  
     form_class = PeticionForm
     template_name = "inventario_stock/peticiones/peticiones-crear.html"
-    success_url = reverse_lazy('inventario_stock:ProductoListar')
+    success_url = reverse_lazy('inventario_stock:PeticionListar')
 
     #Para enviar argumentos al formulario
     def get_form_kwargs(self):
@@ -164,12 +164,13 @@ class Inventario_asignar(CreateView):
         cantidad = float(request.POST.get("cantidad"))
         calidad = request.POST.get("calidad")
         precio = float(request.POST.get("precio"))
+        
 
 
         ###### Verificamos que existe en el inventario sino se crea uno nuevo ###
 
         #Aqui verificamos si el inventario ya existe
-        inventario_actual = Inventario.objects.filter(productor_id=productor,producto_id=producto,calidad=calidad)
+        inventario_actual = Inventario.objects.filter(productor_id=productor,producto_id=producto,calidad=calidad,tipo_peticion=tipo_peticion)
         if inventario_actual.exists():
 
             inventario_a_usar = Inventario.objects.get(productor_id=productor,producto_id=producto,calidad=calidad)

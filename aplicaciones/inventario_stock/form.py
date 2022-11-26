@@ -45,6 +45,7 @@ class ProductoForm(ModelForm):
 
 class PeticionForm(ModelForm):
 
+    
 
     def __init__(self, *args, **kwargs):
         self.usuario = kwargs.pop('usuario',None)
@@ -52,7 +53,10 @@ class PeticionForm(ModelForm):
         super(PeticionForm, self).__init__(*args, **kwargs)
         print("Formulario PeticionForm: ")
         print("usuario : ",self.usuario)
+        print("usuario nacionalidad : ",self.usuario.nacionalidad)
         #print("usuario ID: ",self.usuarioID.id)
+
+        
 
         self.fields['cliente'].empty_label = None
         self.fields['cliente'].queryset = Usuarios.objects.filter(id=self.usuario.id)
@@ -60,6 +64,16 @@ class PeticionForm(ModelForm):
         self.fields['producto'].empty_label = None
 
         self.fields['calidad'].empty_label = None
+        
+        if self.usuario.nacionalidad == "chileno":
+            CHOICES = (('nacional', 'Nacional'),)
+            self.fields['tipo_peticion'].choices = CHOICES
+        else:
+            CHOICES = (('internacional','Internacional'),)
+            self.fields['tipo_peticion'].choices = CHOICES
+        
+        
+        
         #self.fields['imagen'].widget.attrs.update({'class': 'form-control ' })
 
     class Meta:
@@ -74,6 +88,7 @@ class PeticionForm(ModelForm):
             "cantidad": forms.NumberInput(attrs={'class': 'form-control','placeholder':'Ingresa Cantidad','min':1,'min_value':1}),
             "aprobado_por": forms.Select(attrs={'class': 'form-select','style': 'display:none'  }),#display:none
             "estado_peticion": forms.Select(attrs={'class': 'form-select','style': 'display:none'  }),
+            "tipo_peticion": forms.Select(attrs={'class': 'form-select','style': 'display:none'  }),
             #"descripcion": forms.Textarea(attrs={'class': 'form-control border-input','rows':'3','placeholder':'Enter company information'}),
             #"sitio_web": forms.TextInput(attrs={'class': 'form-control border-input','rows':'3','placeholder':'Enter website'}),
             #"color": forms.TextInput(attrs={'type': 'color', 'class':'form-control oculto2'}),
