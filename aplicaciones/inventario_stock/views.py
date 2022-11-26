@@ -158,6 +158,40 @@ class Inventario_asignar(CreateView):
         
         print("entrando en post con los datos:",request.POST)
 
+        #Tomamos los datos de manera individual para ejecutar la logica
+        productor = request.POST.get("productor_id")
+        producto = request.POST.get("producto_id")
+        cantidad = float(request.POST.get("cantidad"))
+        calidad = request.POST.get("calidad")
+        precio = float(request.POST.get("precio"))
+
+
+        ###### Verificamos que existe en el inventario sino se crea uno nuevo ###
+
+        #Aqui verificamos si el inventario ya existe
+        inventario_actual = Inventario.objects.filter(productor_id=productor,producto_id=producto,calidad=calidad)
+        if inventario_actual.exists():
+
+            inventario_a_usar = Inventario.objects.get(productor_id=productor,producto_id=producto,calidad=calidad)
+            inventario_a_usar.cantidad += cantidad 
+            inventario_a_usar.precio = precio
+            inventario_a_usar.save() 
+            print("Inventario: ",inventario_a_usar)
+
+            self.object = None
+            context = self.get_context_data(**kwargs)
+            context['inventarios'] = Inventario.objects.all()
+
+            #Asi es otra forma de enviar el contexto
+            return render(request,"inventario_stock/inventario/inventario-listar.html",context)
+            
+            
+        else:
+            pass
+
+
+        print("El id del productor es: ", productor)
+
 
         form = ProductoForm(request.POST)
         if form.is_valid():

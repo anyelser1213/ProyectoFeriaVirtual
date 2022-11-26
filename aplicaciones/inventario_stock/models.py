@@ -31,6 +31,12 @@ class Peticion(models.Model):
         ('mediana','Mediana'),
         ('baja','Baja'),
     ]
+
+    #Para determinar que calidad tienen las frutas
+    tipo_peticion = [
+        ('nacional','Nacional'),
+        ('internacional','Internacional'),
+    ]
     
 
     id = models.AutoField(primary_key=True)
@@ -42,6 +48,7 @@ class Peticion(models.Model):
 
     aprobado_por = models.ForeignKey(settings.AUTH_USER_MODEL,related_name="aprobado_por", on_delete=models.CASCADE,blank=True, null=True)
     estado_peticion = models.CharField("estado",max_length=150,choices=status_peticion,default='revision',blank=True, null=True)
+    tipo_peticion = models.CharField("estado",max_length=150,choices=tipo_peticion,default='nacional',blank=True, null=True)
     #fecha_caducidad = models.DateField(auto_now_add=False,auto_now=False,blank=True) #Solo fecha
 
     def __str__(self):
