@@ -45,14 +45,27 @@
                                     <table id="datatablesSimple">
                                         <thead>
                                             <tr>
-                                                <th>Nombre</th>
+                                                <th>Cliente</th>
+                                                <th>Productor</th>
+                                                <th>Producto</th>
+                                                <th>Calidad</th>
+                                                <th>Cantidad(Kg)</th>
+                                                <th>Aprobado Por</th>
+                                                <th>Estado</th>
                                                 <th>Opciones</th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             {% for peticion in peticiones  %}
                                                 <tr>
-                                                    <td>{{ peticion.nombre|upper }}</td>
+                                                    <td>{{ peticion.cliente.username|upper }}</td>
+                                                    <td>{{ peticion.productor_elegido.username|upper }}</td>
+                                                    <td>{{ peticion.producto.nombre|upper }}</td>
+                                                    <td>{{ peticion.calidad|upper }}</td>
+                                                    <td>{{ peticion.cantidad}}</td>
+                                                    <td>{{ peticion.aprobado_por.username|upper}}</td>
+                                                    <td>{{ peticion.estado_peticion}}</td>
+                                                    
                                                     <td>
 
                                                         <button type="button" class="btn btn-warning"><i class="fa fa-edit"></i>  Editar</button>

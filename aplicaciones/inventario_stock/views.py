@@ -114,7 +114,7 @@ class PeticionCrear(CreateView):
 
 
 
-class Productoslistar(ListView):
+class Peticionlistar(ListView):
 
     model = Peticion  
     #form_class = ProductoForm
@@ -165,6 +165,39 @@ class Inventario_asignar(CreateView):
 
         #Asi es otra forma de enviar el contexto
         return render(request,self.template_name,context)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

@@ -50,7 +50,7 @@ class PeticionForm(ModelForm):
         self.usuario = kwargs.pop('usuario',None)
         #self.usuarioID = kwargs.pop('user',None)
         super(PeticionForm, self).__init__(*args, **kwargs)
-        print("Formulario PeticionForm: \n")
+        print("Formulario PeticionForm: ")
         print("usuario : ",self.usuario)
         #print("usuario ID: ",self.usuarioID.id)
 
@@ -58,6 +58,8 @@ class PeticionForm(ModelForm):
         self.fields['cliente'].queryset = Usuarios.objects.filter(id=self.usuario.id)
 
         self.fields['producto'].empty_label = None
+
+        self.fields['calidad'].empty_label = None
         #self.fields['imagen'].widget.attrs.update({'class': 'form-control ' })
 
     class Meta:
@@ -65,13 +67,13 @@ class PeticionForm(ModelForm):
         model = Peticion
         fields = "__all__"
         widgets = {
-            "cliente": forms.Select(attrs={'class': 'form-select','style': ''  }),#display:none
-            "productor_elegido": forms.Select(attrs={'class': 'form-select','style': ''  }),#display:none
+            "cliente": forms.Select(attrs={'class': 'form-select','style': 'display:none'  }),#display:none
+            "productor_elegido": forms.Select(attrs={'class': 'form-select','style': 'display:none'  }),#display:none
             "producto": forms.Select(attrs={'class': 'form-select','style': ''  }),#display:none
-            "calidad": forms.Select(attrs={'class': 'form-select','style': ''  }),
+            "calidad": forms.Select(attrs={'class': 'form-select','style': 'color:red'   }),
             "cantidad": forms.NumberInput(attrs={'class': 'form-control','placeholder':'Ingresa Cantidad','min':1,'min_value':1}),
-            "aprobado_por": forms.Select(attrs={'class': 'form-select','style': ''  }),#display:none
-            "estado_peticion": forms.Select(attrs={'class': 'form-select','style': ''  }),
+            "aprobado_por": forms.Select(attrs={'class': 'form-select','style': 'display:none'  }),#display:none
+            "estado_peticion": forms.Select(attrs={'class': 'form-select','style': 'display:none'  }),
             #"descripcion": forms.Textarea(attrs={'class': 'form-control border-input','rows':'3','placeholder':'Enter company information'}),
             #"sitio_web": forms.TextInput(attrs={'class': 'form-control border-input','rows':'3','placeholder':'Enter website'}),
             #"color": forms.TextInput(attrs={'type': 'color', 'class':'form-control oculto2'}),
@@ -79,7 +81,7 @@ class PeticionForm(ModelForm):
             #"imagenEmpresa":forms.ClearableFileInput(attrs={'class': 'form-control oculto','placeholder':'Enter company image'}),
             #"videoEmpresa": forms.ClearableFileInput(attrs={'class': 'form-control oculto','placeholder':'Enter company video','accept':'video/*'}),
             
-            "estado_peticion": forms.Select(attrs={'class': 'form-select','style': ''  }),
+            #"estado_peticion": forms.Select(attrs={'class': 'form-select','style': ''  }),
         }
 
 class InventarioForm(ModelForm):
