@@ -46,7 +46,7 @@
 
 
                 {% if perms.inventario_stock.add_inventario %}
-                <div class="sb-sidenav-menu-heading">Inventario</div>
+                <div class="sb-sidenav-menu-heading">Inventario {{user.rol}} </div>
 
                 <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#menuInventario" aria-expanded="false" aria-controls="menuInventario">
                     <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
@@ -55,7 +55,9 @@
                 </a>
                 <div class="collapse" id="menuInventario" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                     <nav class="sb-sidenav-menu-nested nav">
+                        {% if user.rol != "administrador" %}
                         <a class="nav-link" href="{% url 'inventario_stock:InventarioAsignar' %}">Agregar Producto</a>
+                        {% endif %}
                         <a class="nav-link" href="{% url 'inventario_stock:ProductosCrear' %}">Listar Inventario</a>
                     </nav>
                 </div>

@@ -88,11 +88,11 @@ class InventarioForm(ModelForm):
 
 
     def __init__(self, *args, **kwargs):
-        #usuario_id = kwargs.pop('usuario')
+        self.usuario = kwargs.pop('usuario')
         #self.usuarioID = kwargs.pop('user')
         super(InventarioForm, self).__init__(*args, **kwargs)
         print("Formulario InventarioForm: \n")
-        #print("usuario: ",self.usuarioID)
+        print("usuario: ",self.usuario)
         #print("usuario ID: ",self.usuarioID.id)
 
         #self.fields['creado_por'].empty_label = None
@@ -105,7 +105,7 @@ class InventarioForm(ModelForm):
         model = Inventario
         fields = "__all__"
         widgets = {
-            "nombre": forms.TextInput(attrs={'class': 'form-control','placeholder':'Ingresa nombre de producto'}),
+            #"nombre": forms.TextInput(attrs={'class': 'form-control','placeholder':'Ingresa nombre de producto'}),
             #"direccion": forms.TextInput(attrs={'class': 'form-control','placeholder':'Enter company address'}),
             #"descripcion": forms.Textarea(attrs={'class': 'form-control border-input','rows':'3','placeholder':'Enter company information'}),
             #"sitio_web": forms.TextInput(attrs={'class': 'form-control border-input','rows':'3','placeholder':'Enter website'}),

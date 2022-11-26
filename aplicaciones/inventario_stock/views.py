@@ -135,24 +135,33 @@ class Peticionlistar(ListView):
 class Inventario_asignar(CreateView):
 
     model = Inventario  
-    form_class = ProductoForm
-    template_name = "inventario_stock/productos/productos-crear.html"
+    form_class = InventarioForm
+    template_name = "inventario_stock/inventario/inventario-crear.html"
     success_url = reverse_lazy('inventario_stock:ProductoListar')
+
+    #Para enviar argumentos al formulario
+    def get_form_kwargs(self):
+        kwargs = super(Inventario_asignar, self).get_form_kwargs()
+        kwargs['usuario'] = self.request.user
+        return kwargs
+
+
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['informacion'] = "Hola..."
-        context['titulo'] = "Crear Productos"
+        context['titulo'] = "Asignar Productos"
         context['usuario'] = self.request.user
         return context
 
     def post(self,request,*args,**kwargs):
         
-        print("entrando en post")
+        print("entrando en post con los datos:",request.POST)
+
 
         form = ProductoForm(request.POST)
         if form.is_valid():
-            form.save()#Guardamos el objeto
+            #form.save()#Guardamos el objeto
             return HttpResponseRedirect(self.success_url)
 
         #En caso de que no se cree el self.object se coloca en None

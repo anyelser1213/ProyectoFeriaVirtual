@@ -40,8 +40,7 @@ class Index(TemplateView):
             #Grupo_productor.permissions.set(Permission.objects.get(name="Can add inventario"),
             print("administrador:",request.user.groups.filter(name='administrador').exists())
             print("productor:",request.user.groups.filter(name='productor').exists())
-            print("cliente Externo:",request.user.groups.filter(name='cliente_E').exists())
-            print("cliente Interno:",request.user.groups.filter(name='cliente_I').exists())
+            print("cliente :",request.user.groups.filter(name='cliente').exists())
             print("\n\n")
             #print("usuario permisos: ",request.user.get_all_permissions())
             #print(request.user.has_perm('src.ver_zulia'))
