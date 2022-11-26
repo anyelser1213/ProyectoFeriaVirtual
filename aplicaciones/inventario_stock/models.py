@@ -129,7 +129,7 @@ class Inventario(models.Model):
     id = models.AutoField(primary_key=True)
     productor_id = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE,blank=True, null=True)
     producto_id = models.ForeignKey("Producto", on_delete=models.CASCADE,blank=True, null=True)
-    peso_cantidad = models.FloatField(default=0) #Para saber cantidad disponible de un producto (gramos)
+    cantidad = models.FloatField(default=0) #En base a Kilogramos(kg)
     calidad = models.CharField("calidad",max_length=150,choices=calidad_producto,default='baja',blank=True, null=True)
     precio = models.FloatField(default=0,blank=True,null=True)
 

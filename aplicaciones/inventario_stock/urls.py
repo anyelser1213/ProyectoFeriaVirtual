@@ -21,7 +21,7 @@ urlpatterns = [
 
     #Para el inventario
     path('Inventario_asignar/', vistasInventarioStock.Inventario_asignar.as_view() ,name="InventarioAsignar"),
-    #path('ProductoListar/', vistasInventarioStock.Productoslistar.as_view() ,name="ProductoListar"),
+    path('InventarioListar/', vistasInventarioStock.Inventariolistar.as_view() ,name="InventarioListar"),
 
     
 

@@ -95,8 +95,10 @@ class InventarioForm(ModelForm):
         print("usuario: ",self.usuario)
         #print("usuario ID: ",self.usuarioID.id)
 
-        #self.fields['creado_por'].empty_label = None
-        #self.fields['creado_por'].queryset = Usuarios.objects.filter(id=self.usuarioID.id)
+        self.fields['productor_id'].empty_label = None
+        self.fields['productor_id'].queryset = Usuarios.objects.filter(id=self.usuario.id)
+
+        self.fields['producto_id'].empty_label = None
 
         #self.fields['imagen'].widget.attrs.update({'class': 'form-control ' })
 
@@ -105,14 +107,13 @@ class InventarioForm(ModelForm):
         model = Inventario
         fields = "__all__"
         widgets = {
+            "productor_id": forms.Select(attrs={'class': 'form-select','style': 'display:none'  }),#display:none
+            "producto_id": forms.Select(attrs={'class': 'form-select','style': ''  }),
+            "cantidad": forms.NumberInput(attrs={'class': 'form-control','placeholder':'Ingresa Cantidad','min':1,'min_value':1}),
+            "calidad": forms.Select(attrs={'class': 'form-select','style': ''  }),
+            "precio": forms.NumberInput(attrs={'class': 'form-control','placeholder':'Ingresa Cantidad','min':1,'min_value':1}),
             #"nombre": forms.TextInput(attrs={'class': 'form-control','placeholder':'Ingresa nombre de producto'}),
             #"direccion": forms.TextInput(attrs={'class': 'form-control','placeholder':'Enter company address'}),
             #"descripcion": forms.Textarea(attrs={'class': 'form-control border-input','rows':'3','placeholder':'Enter company information'}),
-            #"sitio_web": forms.TextInput(attrs={'class': 'form-control border-input','rows':'3','placeholder':'Enter website'}),
-            #"color": forms.TextInput(attrs={'type': 'color', 'class':'form-control oculto2'}),
-            #"imagenEmpresa": forms.ImageField(attrs={'class': 'form-control','placeholder':'Enter department image'}),
-            #"imagenEmpresa":forms.ClearableFileInput(attrs={'class': 'form-control oculto','placeholder':'Enter company image'}),
-            #"videoEmpresa": forms.ClearableFileInput(attrs={'class': 'form-control oculto','placeholder':'Enter company video','accept':'video/*'}),
-            #"creado_por": forms.Select(attrs={'class': 'form-select','style': 'display:none'  }),
-        }
+            }
 

@@ -137,7 +137,7 @@ class Inventario_asignar(CreateView):
     model = Inventario  
     form_class = InventarioForm
     template_name = "inventario_stock/inventario/inventario-crear.html"
-    success_url = reverse_lazy('inventario_stock:ProductoListar')
+    success_url = reverse_lazy('inventario_stock:InventarioListar')
 
     #Para enviar argumentos al formulario
     def get_form_kwargs(self):
@@ -179,7 +179,18 @@ class Inventario_asignar(CreateView):
 
 
 
+class Inventariolistar(ListView):
 
+    model = Inventario  
+    #form_class = ProductoForm
+    context_object_name = 'inventario'
+    template_name = "inventario_stock/inventario/inventario-listar.html"
+    success_url = reverse_lazy('base_principal:index')
+
+
+
+
+#######################################################################
 
 
 

@@ -58,7 +58,7 @@
                         {% if user.rol != "administrador" %}
                         <a class="nav-link" href="{% url 'inventario_stock:InventarioAsignar' %}">Agregar Producto</a>
                         {% endif %}
-                        <a class="nav-link" href="{% url 'inventario_stock:ProductosCrear' %}">Listar Inventario</a>
+                        <a class="nav-link" href="{% url 'inventario_stock:InventarioListar' %}">Listar Inventario</a>
                     </nav>
                 </div>
                 {% endif %}

@@ -46,17 +46,41 @@
                                         {% csrf_token %}
                                         <div class="row g-3 align-items-center">
                                             <div class="col-auto">
-                                              <label for="inputText" class="col-form-label">Nombre</label>
+                                              <label for="inputText" class="col-form-label">Producto:</label>
                                             </div>
                                             <div class="col-auto">
-                                                {{ form }}
+                                                {{ form.producto_id }}
                                              </div>
+
+                                             <div class="col-auto">
+                                                <label for="inputText" class="col-form-label">Calidad:</label>
+                                              </div>
+                                             <div class="col-auto">
+                                                {{ form.calidad }}
+                                             </div>
+
+                                             <div class="col-auto">
+                                                <label for="inputText" class="col-form-label">Cantidad:</label>
+                                              </div>
+                                             <div class="col-auto">
+                                                {{ form.cantidad }}
+                                             </div>
+
+                                             <div class="col-auto">
+                                                <label for="inputText" class="col-form-label">Precio:</label>
+                                              </div>
+                                             <div class="col-auto">
+                                                {{ form.precio }}
+                                             </div>
+
+                                             <div class="col-auto">
+                                                <!--Campos ocultos-->
+                                                {{ form.productor_id }}
+                                             </div>
+
                                             <div class="col-auto">
-                                                <!--
-                                                    <span id="passwordHelpInline" class="form-text">
-                                                Debe tener entre 8 y 20 caracteres.
-                                              </span>
-                                                -->
+                                                
+
                                                 <div class="col-auto">
                                                     <span id="passwordHelpInline" class="form-text">
                                                         <input type="submit" class="btn btn-warning" value="Crear">
