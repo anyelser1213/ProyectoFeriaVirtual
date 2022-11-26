@@ -16,7 +16,7 @@ urlpatterns = [
 
     #Para las peticiones
     path('PeticionCrear/', vistasInventarioStock.PeticionCrear.as_view() ,name="PeticionCrear"),
-    #path('PeticionListar/', vistasInventarioStock.Productoslistar.as_view() ,name="ProductoListar"),
+    path('PeticionListar/', vistasInventarioStock.Productoslistar.as_view() ,name="PeticionListar"),
 
 
     #Para el inventario

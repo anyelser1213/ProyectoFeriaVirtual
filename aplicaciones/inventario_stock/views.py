@@ -92,7 +92,8 @@ class PeticionCrear(CreateView):
         
         print("entrando en post")
 
-        form = PeticionForm(request.POST)
+        #Si pide argumentos se lo pasamos
+        form = PeticionForm(request.POST,usuario=self.request.user)
         if form.is_valid():
             form.save()#Guardamos el objeto
             return HttpResponseRedirect(self.success_url)
@@ -110,6 +111,17 @@ class PeticionCrear(CreateView):
         
         #Asi es una forma de enviar
         #return render(request,self.template_name,{"form":form})
+
+
+
+class Productoslistar(ListView):
+
+    model = Peticion  
+    #form_class = ProductoForm
+    context_object_name = 'peticiones'
+    template_name = "inventario_stock/peticiones/peticiones-listar.html"
+    success_url = reverse_lazy('base_principal:index')
+
 
 
 #############################################################################################

@@ -57,6 +57,7 @@ class PeticionForm(ModelForm):
         self.fields['cliente'].empty_label = None
         self.fields['cliente'].queryset = Usuarios.objects.filter(id=self.usuario.id)
 
+        self.fields['producto'].empty_label = None
         #self.fields['imagen'].widget.attrs.update({'class': 'form-control ' })
 
     class Meta:
@@ -64,15 +65,20 @@ class PeticionForm(ModelForm):
         model = Peticion
         fields = "__all__"
         widgets = {
-            #"nombre": forms.TextInput(attrs={'class': 'form-control','placeholder':'Ingresa nombre de producto'}),
-            #"direccion": forms.TextInput(attrs={'class': 'form-control','placeholder':'Enter company address'}),
+            "cliente": forms.Select(attrs={'class': 'form-select','style': ''  }),#display:none
+            "productor_elegido": forms.Select(attrs={'class': 'form-select','style': ''  }),#display:none
+            "producto": forms.Select(attrs={'class': 'form-select','style': ''  }),#display:none
+            "calidad": forms.Select(attrs={'class': 'form-select','style': ''  }),
+            "cantidad": forms.NumberInput(attrs={'class': 'form-control','placeholder':'Ingresa Cantidad','min':1,'min_value':1}),
+            "aprobado_por": forms.Select(attrs={'class': 'form-select','style': ''  }),#display:none
+            "estado_peticion": forms.Select(attrs={'class': 'form-select','style': ''  }),
             #"descripcion": forms.Textarea(attrs={'class': 'form-control border-input','rows':'3','placeholder':'Enter company information'}),
             #"sitio_web": forms.TextInput(attrs={'class': 'form-control border-input','rows':'3','placeholder':'Enter website'}),
             #"color": forms.TextInput(attrs={'type': 'color', 'class':'form-control oculto2'}),
             #"imagenEmpresa": forms.ImageField(attrs={'class': 'form-control','placeholder':'Enter department image'}),
             #"imagenEmpresa":forms.ClearableFileInput(attrs={'class': 'form-control oculto','placeholder':'Enter company image'}),
             #"videoEmpresa": forms.ClearableFileInput(attrs={'class': 'form-control oculto','placeholder':'Enter company video','accept':'video/*'}),
-            "cliente": forms.Select(attrs={'class': 'form-select','style': ''  }),#display:none
+            
             "estado_peticion": forms.Select(attrs={'class': 'form-select','style': ''  }),
         }
 
