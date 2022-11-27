@@ -5,3 +5,5 @@ from .models import *
 
 
 admin.site.register(Peticion)
+admin.site.register(Ofertas_Productores)
+admin.site.register(Ofertas_Transportistas)
