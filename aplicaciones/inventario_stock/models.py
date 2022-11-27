@@ -16,10 +16,13 @@ class Producto(models.Model):
 
 class Peticion(models.Model):
 
+
+    #Con esto determinamos en que proceso se encuentra la peticion
     status_peticion = [
-        ('revision','Revisión'),
+        ('revision','Revisión'), #El administrador debe validar la petición
         #('aprobada','Aprobada'),
-        ('oferta','Oferta'),
+        ('oferta','Oferta'), #Los productores pueden ver y ofertar
+        ('transporte','Transporte'),#La peticion se hace visible para los transportistas y pueden ofertar para enviar la mercancia
         ('proceso','En proceso de atención'),
         ('atendida','Atendida'),
         ('cancelada','Cancelada'),
