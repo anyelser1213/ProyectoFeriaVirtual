@@ -13,6 +13,9 @@ urlpatterns = [
     path('PeticionCrear/', vistasPeticiones.PeticionCrear.as_view() ,name="PeticionCrear"),
     path('PeticionListar/', vistasPeticiones.Peticionlistar.as_view() ,name="PeticionListar"),
 
+     #Para las ofertas nacionales e internacionales
+    path('Ofertas_nacionales/', vistasPeticiones.Ofertas_Nacionales.as_view() ,name="OfertasNacionales"),
+    path('Ofertas_internacionales/', vistasPeticiones.Ofertas_Internacionales.as_view() ,name="OfertasInternacionales"),
 
 
     #Para las apis

@@ -202,9 +202,13 @@ class Usuarios(AbstractBaseUser,PermissionsMixin):
 
             print("Vamos a crear a los grupos")
 
+            Grupo_cliente= Group.objects.create(name="master") #Permisos solo para master
             Grupo_administrador = Group.objects.create(name="administrador")
             Grupo_productor = Group.objects.create(name="productor") #Permisos solo para productor
             Grupo_cliente= Group.objects.create(name="cliente") #Permisos solo para clientes
+            Grupo_cliente= Group.objects.create(name="transportista") #Permisos solo para transportistas
+            Grupo_cliente= Group.objects.create(name="consultor") #Permisos solo para consultores
+            
             
             Grupo_administrador.permissions.set(list(Permission.objects.all())) #Todos los permisos
             Grupo_productor.permissions.add(

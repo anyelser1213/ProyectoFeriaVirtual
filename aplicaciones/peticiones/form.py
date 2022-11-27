@@ -9,7 +9,7 @@ from aplicaciones.usuarios.models import *
 
 
 
-###################### AQUI COMIENZAN LOS FORMULARIOS PARA TODO DE INVENTARIO ##########################################
+###################### AQUI COMIENZAN LOS FORMULARIOS PARA PETICIONES ##########################################
 
 
 
