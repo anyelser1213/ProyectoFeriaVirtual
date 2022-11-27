@@ -24,8 +24,8 @@ urlpatterns = [
     path('InventarioListar/', vistasInventarioStock.Inventariolistar.as_view() ,name="InventarioListar"),
 
     #Para las ofertas nacionales e internacionales
-    path('Ofertas_nacionales/', vistasInventarioStock.Oferta_Nacional.as_view() ,name="OfertasNacionales"),
-    #path('Ofertas_internacionales/', vistasInventarioStock.Oferta_Nacional.as_view() ,name="OfertasInternacionales"),
+    path('Ofertas_nacionales/', vistasInventarioStock.Ofertas_Nacionales.as_view() ,name="OfertasNacionales"),
+    path('Ofertas_internacionales/', vistasInventarioStock.Ofertas_Internacionales.as_view() ,name="OfertasInternacionales"),
 
 
 #Oferta_Nacional

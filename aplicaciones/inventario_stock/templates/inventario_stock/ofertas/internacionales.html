@@ -1,0 +1,90 @@
+{% extends "base.html" %}
+{% load static %}
+
+
+{% block titulo %}Ofertas | Internacionales{% endblock %}
+
+
+
+{% block enlacessecundariosCSS %}
+        
+{% endblock %}
+
+
+{% block menu_superior %}
+
+        <!--Aqui se incluye el menu superior-->
+        {% include "menusuperior.html" %}
+        
+{% endblock%}
+
+{% block menu_lateral %}
+
+        <!--Aqui se incluye el menu superior-->
+        {% include "menulateral.html" with person="Jane" %}
+            
+{% endblock%}
+
+{% block cuerpo %}
+
+                <div id="layoutSidenav_content">
+                    <main>
+                        <div class="container-fluid px-4">
+
+                            <h1 class="mt-4">Ofertas Internacionales</h1>
+                            
+                            
+                            {% for oferta in ofertas %}
+                            <br>
+                                <div class="card   border-dark ">
+                                    <div class="card-header text-center border-dark  ">
+                                    <ul class="nav nav-pills card-header-pills">
+                                        
+                                        <h2 class="card-title text-center">   Oferta de Cliente: {{oferta.cliente.username|title}} </h2>
+                                        
+                                    </ul>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <div class="col-6"><p class="card-text text-capitalize">Producto: {{oferta.producto}}</p></div>
+                                            <div class="col-6"><p class="card-text text-capitalize">Calidad: {{oferta.calidad}}</p></div>
+                                        </div>
+                                        <br>
+                                        <div class="row">
+                                            <div class="col-6"><p class="card-text text-capitalize">Cantidad(Kg): {{oferta.cantidad}}</p></div>
+                                            <div class="col-6"><a href="#" class="btn btn-primary">Ofertar</a></div>
+                                        </div>
+                                    </div>
+                                </div>                      
+                            {% endfor %}
+                            
+
+
+
+
+                            
+                            
+                            
+                        </div><!--Fin de container Fluid-->
+                    </main>
+                    <footer class="py-4 bg-light mt-auto">
+                        <div class="container-fluid px-4">
+                            <div class="d-flex align-items-center justify-content-between small">
+                                <div class="text-muted">Copyright &copy; Maipo Grande 2022</div>
+                                <div>
+                                    <a href="#">Privacy Policy</a>
+                                    &middot;
+                                    <a href="#">Terms &amp; Conditions</a>
+                                </div>
+                            </div>
+                        </div>
+                    </footer>
+                </div>
+            
+            {% endblock%}
+
+
+
+            {% block enlacessecundariosJS %}
+                
+            {% endblock %}
