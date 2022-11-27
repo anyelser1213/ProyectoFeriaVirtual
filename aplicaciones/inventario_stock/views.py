@@ -170,7 +170,7 @@ class Inventario_asignar(CreateView):
         ###### Verificamos que existe en el inventario sino se crea uno nuevo ###
 
         #Aqui verificamos si el inventario ya existe
-        inventario_actual = Inventario.objects.filter(productor_id=productor,producto_id=producto,calidad=calidad,tipo_peticion=tipo_peticion)
+        inventario_actual = Inventario.objects.filter(productor_id=productor,producto_id=producto,calidad=calidad)
         if inventario_actual.exists():
 
             inventario_a_usar = Inventario.objects.get(productor_id=productor,producto_id=producto,calidad=calidad)
@@ -287,22 +287,26 @@ class Ofertas_Nacionales(TemplateView):
         context['informacion'] = "Hola..."
 
         context['ofertas'] = Peticion.objects.none()
+        context['contrato'] ="SIN CONTRATO"
         #Aqui verificamos si el inventario ya existe
         contrato_usuario = Contrato.objects.filter(usuario=self.request.user)
         if contrato_usuario.exists():
             print("Si tiene contrato")
-
+            
             #Verificamos si tiene el contrato vigente
             contrato_vigente = Contrato.objects.get(usuario=self.request.user)
             if contrato_vigente.estado_contrato == "vigente":
                 print("El contrato del usuario:",self.request.user.username,"SI esta vigente.")
                 context['ofertas'] = Peticion.objects.filter(tipo_peticion="nacional")
+                context['contrato'] ="CONTRATO VIGENTE"
+
             else:
                 print("El contrato del usuario:",self.request.user.username,"NO esta vigente.")
                 context['ofertas'] = Peticion.objects.none()
+                context['contrato'] ="CONTRATO CADUCADO"
         else:
             print("No tiene contrato")
-        
+            context['contrato'] ="SIN CONTRATO"
         
         return context
 
@@ -362,22 +366,26 @@ class Ofertas_Internacionales(TemplateView):
         context['informacion'] = "Hola..."
 
         context['ofertas'] = Peticion.objects.none()
+        context['contrato'] ="SIN CONTRATO"
         #Aqui verificamos si el inventario ya existe
         contrato_usuario = Contrato.objects.filter(usuario=self.request.user)
         if contrato_usuario.exists():
             print("Si tiene contrato")
-
+            
             #Verificamos si tiene el contrato vigente
             contrato_vigente = Contrato.objects.get(usuario=self.request.user)
             if contrato_vigente.estado_contrato == "vigente":
                 print("El contrato del usuario:",self.request.user.username,"SI esta vigente.")
                 context['ofertas'] = Peticion.objects.filter(tipo_peticion="internacional")
+                context['contrato'] ="CONTRATO VIGENTE"
+
             else:
                 print("El contrato del usuario:",self.request.user.username,"NO esta vigente.")
                 context['ofertas'] = Peticion.objects.none()
+                context['contrato'] ="CONTRATO CADUCADO"
         else:
             print("No tiene contrato")
-        
+            context['contrato'] ="SIN CONTRATO"
         
         return context
 
