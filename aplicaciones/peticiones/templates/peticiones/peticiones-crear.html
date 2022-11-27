@@ -1,0 +1,119 @@
+{% extends "base.html" %}
+{% load static %}
+
+
+{% block titulo %}Peticion | Crear{% endblock %}
+
+
+
+{% block enlacessecundariosCSS %}
+        
+{% endblock %}
+
+
+{% block menu_superior %}
+
+        <!--Aqui se incluye el menu superior-->
+        {% include "menusuperior.html" %}
+        
+{% endblock%}
+
+{% block menu_lateral %}
+
+        <!--Aqui se incluye el menu superior-->
+        {% include "menulateral.html" with person="Jane" %}
+            
+{% endblock%}
+
+{% block cuerpo %}
+
+                <div id="layoutSidenav_content">
+                    <main>
+                        <div class="container-fluid px-4">
+                            <h1 class="mt-4">Petición</h1>
+                            <ol class="breadcrumb mb-4">
+                            </ol>
+                            
+                            <div class="card mb-4">
+                                <div class="card-header">
+                                    <i class="fas fa-table me-1"></i>
+                                    Crear Petición
+                                </div>
+                                <div class="card-body">
+
+                                    
+                                    <form method="post">
+                                        {% csrf_token %}
+                                        <div class="row g-3 align-items-center">
+                                            <div class="col-auto">
+                                              <label for="inputText" class="col-form-label">Producto:</label>
+                                            </div>
+                                            <div class="col-auto">
+                                                {{ form.producto }}
+                                             </div>
+
+                                             <div class="col-auto">
+                                                <label for="inputText" class="col-form-label">Calidad:</label>
+                                              </div>
+                                             <div class="col-auto">
+                                                {{ form.calidad }}
+                                             </div>
+
+                                             <div class="col-auto">
+                                                <label for="inputText" class="col-form-label">Cantidad:</label>
+                                              </div>
+                                             <div class="col-auto">
+                                                {{ form.cantidad }}
+                                             </div>
+
+                                             <div class="col-auto">
+                                                <!--Campos ocultos-->
+                                                {{ form.cliente }}
+                                                {{ form.productor_elegido }}
+                                                {{ form.aprobado_por }}
+                                                {{ form.estado_peticion }}
+                                                {{ form.tipo_peticion }}
+                                            </div>
+                                            <div class="col-auto">
+
+                                                <div class="col-auto">
+                                                    <span id="passwordHelpInline" class="form-text">
+                                                        <input type="submit" class="btn btn-warning " value="Crear">
+                                                    </span>
+                                                  </div>
+                                              
+                                            </div>
+                                        </div>
+                                        
+                                            
+                                    </form>
+
+                                </div>
+                            </div>
+                        </div>
+                    </main>
+                    <footer class="py-4 bg-light mt-auto">
+                        <div class="container-fluid px-4">
+                            <div class="d-flex align-items-center justify-content-between small">
+                                <div class="text-muted">Copyright &copy; Your Website 2022</div>
+                                <div>
+                                    <a href="#">Privacy Policy</a>
+                                    &middot;
+                                    <a href="#">Terms &amp; Conditions</a>
+                                </div>
+                            </div>
+                        </div>
+                    </footer>
+                </div>
+            
+            {% endblock%}
+
+
+
+            {% block enlacessecundariosJS %}
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
+                <script src="{% static 'assets/demo/chart-area-demo.js' %}"></script>
+                <script src="{% static 'assets/demo/chart-bar-demo.js' %}"></script>
+                <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
+                <script src="{% static 'js/datatables-simple-demo.js' %}"></script>
+            {% endblock %}
