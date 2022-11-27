@@ -288,12 +288,22 @@ class Oferta_Nacional(TemplateView):
 
 
         #Aqui verificamos si el inventario ya existe
-        contrato_usuario = Contrato.objects.filter()
+        contrato_usuario = Contrato.objects.filter(usuario=self.request.user)
         if contrato_usuario.exists():
             print("Si tiene contrato")
+
+            #Verificamos si tiene el contrato vigente
+            contrato_vigente = Contrato.objects.get(usuario=self.request.user)
+            if contrato_vigente.estado_contrato == "vigente":
+                print("El contrato del usuario:",self.request.user.username,"SI esta vigente.")
+            else:
+                print("El contrato del usuario:",self.request.user.username,"NO esta vigente.")
+
         else:
             print("No tiene contrato")
-        #context['ofertas'] = 
+        
+        context['ofertas'] = Peticion.objects.all()
+        return context
 
 
 
