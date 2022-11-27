@@ -123,12 +123,19 @@ class Peticionlistar(ListView):
     success_url = reverse_lazy('base_principal:index')
     #queryset = Peticion.objects.filter(cliente=request.user) #Esta es una forma
 
+
+    #Para establecer parametros en context_object_name
     def get_queryset(self):
 
 
         #Aqui debemos hacer una logica en caso de que sea administrador o usuario diferente a administrador
-
-        return Peticion.objects.filter(cliente=self.request.user) # Get 5 books containing the title war
+        print("Usuario Perfil:",self.request.user.rol)
+        if self.request.user.rol == "administrador":
+            return Peticion.objects.all() # Get 5 books containing the title war
+        else:
+            return Peticion.objects.filter(cliente=self.request.user) # Get 5 books containing the title war
+    
+    
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         #context['now'] = timezone.now()
