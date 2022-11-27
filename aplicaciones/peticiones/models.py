@@ -1,7 +1,7 @@
 from django.db import models
 from django.conf import settings
 
-from aplicaciones.inventario_stock.models import Producto
+from aplicaciones.productos.models import Producto
 
 # Create your models here.
 

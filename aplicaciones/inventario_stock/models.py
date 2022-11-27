@@ -1,18 +1,7 @@
 from django.db import models
 from django.conf import settings
-#from aplicaciones.usuarios.models import Usuarios
+from aplicaciones.productos.models import Producto
 
-# Create your models here.
-#el producto es para saber que tipo de mercancia tenemos
-class Producto(models.Model):
-
-
-    id = models.AutoField(primary_key=True)
-    nombre = models.CharField(max_length=100,unique=True)
-
-    def __str__(self):
-        #return str(self.id_jugada)+" "+str(self.id_telefono)+" Usuario: "+str(self.id_usuario)
-        return str(self.nombre).title()
 
 
 
@@ -79,7 +68,7 @@ class Inventario(models.Model):
 
     id = models.AutoField(primary_key=True)
     productor_id = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE,blank=True, null=True)
-    producto_id = models.ForeignKey("Producto", on_delete=models.CASCADE,blank=True, null=True)
+    producto_id = models.ForeignKey(Producto, on_delete=models.CASCADE,blank=True, null=True)
     cantidad = models.FloatField(default=1) #En base a Kilogramos(kg)
     calidad = models.CharField("calidad",max_length=150,choices=calidad_producto,default='baja',blank=False, null=False)
     precio = models.FloatField(default=1,blank=True,null=True)

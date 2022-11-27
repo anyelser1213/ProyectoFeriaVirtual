@@ -2,11 +2,14 @@
 {% load static %}
 
 
-{% block titulo %}Peticion | Crear{% endblock %}
+{% block titulo %}Productos | Crear{% endblock %}
 
 
 
 {% block enlacessecundariosCSS %}
+
+<!-- JavaScript Bundle with Popper -->
+<script src="{% static 'vendor/sweetalert2/sweetalert2.all.js' %}"  crossorigin="anonymous"></script>
         
 {% endblock %}
 
@@ -30,14 +33,14 @@
                 <div id="layoutSidenav_content">
                     <main>
                         <div class="container-fluid px-4">
-                            <h1 class="mt-4">Petición</h1>
+                            <h1 class="mt-4">Productos</h1>
                             <ol class="breadcrumb mb-4">
                             </ol>
                             
                             <div class="card mb-4">
                                 <div class="card-header">
                                     <i class="fas fa-table me-1"></i>
-                                    Crear Petición
+                                    Crear Producto
                                 </div>
                                 <div class="card-body">
 
@@ -46,43 +49,53 @@
                                         {% csrf_token %}
                                         <div class="row g-3 align-items-center">
                                             <div class="col-auto">
-                                              <label for="inputText" class="col-form-label">Producto:</label>
+                                              <label for="inputText" class="col-form-label">Nombre</label>
                                             </div>
                                             <div class="col-auto">
-                                                {{ form.producto }}
+                                                {{ form.nombre }}
                                              </div>
-
-                                             <div class="col-auto">
-                                                <label for="inputText" class="col-form-label">Calidad:</label>
-                                              </div>
-                                             <div class="col-auto">
-                                                {{ form.calidad }}
-                                             </div>
-
-                                             <div class="col-auto">
-                                                <label for="inputText" class="col-form-label">Cantidad:</label>
-                                              </div>
-                                             <div class="col-auto">
-                                                {{ form.cantidad }}
-                                             </div>
-
-                                             <div class="col-auto">
-                                                <!--Campos ocultos-->
-                                                {{ form.cliente }}
-                                                {{ form.productor_elegido }}
-                                                {{ form.aprobado_por }}
-                                                {{ form.estado_peticion }}
-                                                {{ form.tipo_peticion }}
-                                            </div>
                                             <div class="col-auto">
-
+                                                <!--
+                                                    <span id="passwordHelpInline" class="form-text">
+                                                Debe tener entre 8 y 20 caracteres.
+                                              </span>
+                                                -->
+                                                
                                                 <div class="col-auto">
                                                     <span id="passwordHelpInline" class="form-text">
-                                                        <input type="submit" class="btn btn-warning " value="Crear">
+                                                        <input type="submit" class="btn btn-warning" value="Crear">
                                                     </span>
                                                   </div>
+                                                  
                                               
                                             </div>
+                                            {% if form.errors %}
+
+                                            <script>
+
+                                                Swal.fire({
+                                                    icon: 'error',
+                                                    title: 'Error...',
+                                                    text: 'Ya existe un producto con ese nombre',
+                                                    })
+                                            </script>
+                                            <!--
+                                            <div class="alert alert-danger" role="alert">
+                                                <span>Ha ocurrido un error: </span>
+                                                <br>
+                                                {% for campo in form %}
+
+                                                    {% for error in campo.errors %}
+                                                        {{error}}
+                                                    {% endfor %}
+
+                                                {% endfor %}
+
+                                                </div>
+                                                --->
+                                            {% endif %}
+                                            
+                                            
                                         </div>
                                         
                                             
@@ -116,4 +129,11 @@
                 <script src="{% static 'assets/demo/chart-bar-demo.js' %}"></script>
                 <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
                 <script src="{% static 'js/datatables-simple-demo.js' %}"></script>
+
+
+                
+       
+
+                
+
             {% endblock %}

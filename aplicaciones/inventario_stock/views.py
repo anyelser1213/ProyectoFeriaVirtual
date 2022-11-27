@@ -1,5 +1,11 @@
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render, redirect
+
+#De la aplicacion de Productos
+from aplicaciones.peticiones.models import Peticion
+from aplicaciones.peticiones.form import ProductoForm
+
+
 from aplicaciones.inventario_stock.form import * #Aqui todos los formularios del inventario
 from aplicaciones.inventario_stock.models import *
 
@@ -12,53 +18,6 @@ from aplicaciones.usuarios.form import NewUserForm
 
 
 # Create your views here.
-
-
-class ProductosCrear(CreateView):
-
-    model = Producto  
-    form_class = ProductoForm
-    template_name = "inventario_stock/productos/productos-crear.html"
-    success_url = reverse_lazy('inventario_stock:ProductoListar')
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['informacion'] = "Hola..."
-        context['titulo'] = "Crear Productos"
-        context['usuario'] = self.request.user
-        return context
-
-    def post(self,request,*args,**kwargs):
-        
-        print("entrando en post")
-
-        form = ProductoForm(request.POST)
-        if form.is_valid():
-            form.save()#Guardamos el objeto
-            return HttpResponseRedirect(self.success_url)
-
-        #En caso de que no se cree el self.object se coloca en None
-        self.object = None
-        print(form.errors)
-
-        #Aqui llamamos a todas las variables establecidas en get_context
-        context = self.get_context_data(**kwargs)
-        context['form'] = form
-
-        #Asi es otra forma de enviar el contexto
-        return render(request,self.template_name,context)
-        
-        #Asi es una forma de enviar
-        #return render(request,self.template_name,{"form":form})
-
-
-class Productoslistar(ListView):
-
-    model = Producto  
-    #form_class = ProductoForm
-    context_object_name = 'productos'
-    template_name = "inventario_stock/productos/productos-listar.html"
-    success_url = reverse_lazy('base_principal:index')
 
 
 

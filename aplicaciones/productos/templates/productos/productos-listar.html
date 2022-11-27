@@ -2,7 +2,7 @@
 {% load static %}
 
 
-{% block titulo %}Peticiones | Listar{% endblock %}
+{% block titulo %}Productores | Listar{% endblock %}
 
 
 
@@ -30,14 +30,14 @@
                 <div id="layoutSidenav_content">
                     <main>
                         <div class="container-fluid px-4">
-                            <h1 class="mt-4">Peticiones</h1>
+                            <h1 class="mt-4">Productos</h1>
                             <ol class="breadcrumb mb-4">
                             </ol>
                             
                             <div class="card mb-4">
                                 <div class="card-header">
                                     <i class="fas fa-table me-1"></i>
-                                    Lista de Peticiones
+                                    Lista de Productos
                                 </div>
                                 <div class="card-body">
                                     
@@ -45,27 +45,14 @@
                                     <table id="datatablesSimple">
                                         <thead>
                                             <tr>
-                                                <th>Cliente</th>
-                                                <th>Productor</th>
-                                                <th>Producto</th>
-                                                <th>Calidad</th>
-                                                <th>Cantidad(Kg)</th>
-                                                <th>Aprobado Por</th>
-                                                <th>Estado</th>
+                                                <th>Nombre</th>
                                                 <th>Opciones</th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            {% for peticion in peticiones  %}
+                                            {% for producto in productos  %}
                                                 <tr>
-                                                    <td>{{ peticion.cliente.username|upper }}</td>
-                                                    <td>{{ peticion.productor_elegido.username|upper }}</td>
-                                                    <td>{{ peticion.producto.nombre|upper }}</td>
-                                                    <td>{{ peticion.calidad|upper }}</td>
-                                                    <td>{{ peticion.cantidad}}</td>
-                                                    <td>{{ peticion.aprobado_por.username|upper}}</td>
-                                                    <td>{{ peticion.estado_peticion}}</td>
-                                                    
+                                                    <td>{{ producto.nombre|upper }}</td>
                                                     <td>
 
                                                         <button type="button" class="btn btn-warning"><i class="fa fa-edit"></i>  Editar</button>
@@ -94,7 +81,7 @@
                                                 </tr>
                                                 
                                             {% empty %}
-                                                <li>No hay Peticiones</li>
+                                                <li>No hay Productos</li>
                                             {% endfor %}
                                             
                                             
@@ -107,7 +94,7 @@
                     <footer class="py-4 bg-light mt-auto">
                         <div class="container-fluid px-4">
                             <div class="d-flex align-items-center justify-content-between small">
-                                <div class="text-muted">Copyright &copy; Maipo Grande 2022</div>
+                                <div class="text-muted">Copyright &copy; Your Website 2022</div>
                                 <div>
                                     <a href="#">Privacy Policy</a>
                                     &middot;

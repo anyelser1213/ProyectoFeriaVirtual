@@ -7,12 +7,6 @@ from . import views as vistasInventarioStock
 app_name ="inventario_stock"
 
 urlpatterns = [
-    
-
-    #Para los productos
-    path('ProductoCrear/', vistasInventarioStock.ProductosCrear.as_view() ,name="ProductosCrear"),
-    path('ProductoListar/', vistasInventarioStock.Productoslistar.as_view() ,name="ProductoListar"),
-
 
     #Para el inventario
     path('Inventario_asignar/', vistasInventarioStock.Inventario_asignar.as_view() ,name="InventarioAsignar"),
@@ -23,12 +17,6 @@ urlpatterns = [
     path('Ofertas_internacionales/', vistasInventarioStock.Ofertas_Internacionales.as_view() ,name="OfertasInternacionales"),
 
 
-#Oferta_Nacional
-
-
-    #Para las apis
-    #path('probando/', views.Probando ,name="probando"),
-    #path('api_login/', views.api_login ,name="api_login"),
 
     
     

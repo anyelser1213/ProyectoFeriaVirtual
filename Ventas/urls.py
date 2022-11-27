@@ -28,6 +28,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
 
     path('', include(('aplicaciones.base_principal.urls'))),
+    path('', include(('aplicaciones.productos.urls'))),
     path('', include(('aplicaciones.peticiones.urls'))),
     path('', include(('aplicaciones.inventario_stock.urls'))),
     path('', include(('aplicaciones.usuarios.urls'))),

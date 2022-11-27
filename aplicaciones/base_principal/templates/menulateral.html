@@ -37,7 +37,7 @@
                 <div class="collapse" id="menuPeticion" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                     <nav class="sb-sidenav-menu-nested nav">
                         <a class="nav-link" href="{% url 'peticiones:PeticionCrear' %}">Crear Petición</a>
-                        <a class="nav-link" href="{% url 'peticiones:PeticionListar' %}"">Listar Peticiones</a>
+                        <a class="nav-link" href="{% url 'peticiones:PeticionListar' %}">Listar Peticiones</a>
                     </nav>
                 </div>
                 {% endif %}
@@ -52,8 +52,8 @@
                 </a>
                 <div class="collapse" id="menuProducto" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                     <nav class="sb-sidenav-menu-nested nav">
-                        <a class="nav-link" href="{% url 'inventario_stock:ProductosCrear' %}">Crear Producto</a>
-                        <a class="nav-link" href="{% url 'inventario_stock:ProductoListar' %}">Listar Productos</a>
+                        <a class="nav-link" href="{% url 'productos:ProductosCrear' %}">Crear Producto</a>
+                        <a class="nav-link" href="{% url 'productos:ProductoListar' %}">Listar Productos</a>
                     </nav>
                 </div>
                 {% endif %}
