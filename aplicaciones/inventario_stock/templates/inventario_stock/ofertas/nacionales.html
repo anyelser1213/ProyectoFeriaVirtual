@@ -1,0 +1,98 @@
+{% extends "base.html" %}
+{% load static %}
+
+
+{% block titulo %}Ofertas | Nacionales{% endblock %}
+
+
+
+{% block enlacessecundariosCSS %}
+        
+{% endblock %}
+
+
+{% block menu_superior %}
+
+        <!--Aqui se incluye el menu superior-->
+        {% include "menusuperior.html" %}
+        
+{% endblock%}
+
+{% block menu_lateral %}
+
+        <!--Aqui se incluye el menu superior-->
+        {% include "menulateral.html" with person="Jane" %}
+            
+{% endblock%}
+
+{% block cuerpo %}
+
+                <div id="layoutSidenav_content">
+                    <main>
+                        <div class="container-fluid px-4">
+                            
+                            <h1 class="mt-4">Ofertas Nacionales</h1>
+                            <br>
+
+                            <div class="card   border-dark ">
+                                <div class="card-header text-center border-dark  ">
+                                  <ul class="nav nav-pills card-header-pills">
+                                    
+                                    <!------>
+                                    <!---
+                                        <li class="nav-item">
+                                      <a class="nav-link active" href="#">Ofertar</a>
+                                    </li>
+                                    <li class="nav-item">
+                                      <a class="nav-link" href="#">Link</a>
+                                    </li>
+
+                                    <li class="nav-item">
+                                      <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Probando cosas aqui</a>
+                                    </li>
+                                    --->
+                                    
+                                    <h2 class="card-title text-center">   Oferta de Cliente: </h2>
+                                    
+                                  </ul>
+                                </div>
+                                <div class="card-body">
+                                  <h5 class="card-title">Special title treatment</h5>
+                                  <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                                  <a href="#" class="btn btn-primary">Ofertar</a>
+                                </div>
+                            </div>
+
+
+
+
+                            
+                            
+                            
+                        </div><!--Fin de container Fluid-->
+                    </main>
+                    <footer class="py-4 bg-light mt-auto">
+                        <div class="container-fluid px-4">
+                            <div class="d-flex align-items-center justify-content-between small">
+                                <div class="text-muted">Copyright &copy; Your Website 2022</div>
+                                <div>
+                                    <a href="#">Privacy Policy</a>
+                                    &middot;
+                                    <a href="#">Terms &amp; Conditions</a>
+                                </div>
+                            </div>
+                        </div>
+                    </footer>
+                </div>
+            
+            {% endblock%}
+
+
+
+            {% block enlacessecundariosJS %}
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
+                <script src="{% static 'assets/demo/chart-area-demo.js' %}"></script>
+                <script src="{% static 'assets/demo/chart-bar-demo.js' %}"></script>
+                <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
+                <script src="{% static 'js/datatables-simple-demo.js' %}"></script>
+            {% endblock %}

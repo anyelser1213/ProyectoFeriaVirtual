@@ -23,8 +23,12 @@ urlpatterns = [
     path('Inventario_asignar/', vistasInventarioStock.Inventario_asignar.as_view() ,name="InventarioAsignar"),
     path('InventarioListar/', vistasInventarioStock.Inventariolistar.as_view() ,name="InventarioListar"),
 
-    
+    #Para las ofertas nacionales e internacionales
+    path('Ofertas_nacionales/', vistasInventarioStock.Oferta_Nacional.as_view() ,name="OfertasNacionales"),
+    #path('Ofertas_internacionales/', vistasInventarioStock.Oferta_Nacional.as_view() ,name="OfertasInternacionales"),
 
+
+#Oferta_Nacional
 
 
     #Para las apis
