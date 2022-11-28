@@ -1,6 +1,6 @@
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render, redirect
-from aplicaciones.inventario_stock.models import Contrato
+from aplicaciones.ofertas.models import Contrato
 
 #Clases para las plantillas
 from django.views.generic import View,TemplateView, CreateView, UpdateView, DetailView, ListView, DeleteView

@@ -7,6 +7,41 @@ from django.conf import settings
 
 
 
+#Estos contratos pueden ser para productores o clientes o mas usuarios
+class Contrato(models.Model):
+
+    status = [
+        ('vigente','Vigente'),
+        ('caducado','Caducado'),
+    ]
+
+    id = models.AutoField(primary_key=True)
+    usuario = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE,blank=True, null=True)
+    estado_contrato = models.CharField("estatus",max_length=150,choices=status,default='caducado',blank=True, null=True)
+    fecha_caducidad = models.DateField(auto_now_add=False,auto_now=False,blank=True) #Solo fecha
+
+    def __str__(self):
+         return "Usuario: "+str(self.usuario.username)+", Estatus: "+str(self.estado_contrato)
+
+    class Meta:
+
+        verbose_name = "Contrato"
+        verbose_name_plural = "Contratos"
+
+        permissions = [
+            #(Lo que se guarda en bases de datos, lo que se ve al usuario)
+            
+            #Permisos para iniciar y consultar jugadas
+            #("iniciarjugada", "IniciarJugada"),
+            #("consultarjugada", "ConsultarJugada"),
+
+            #Para ver los informes
+            #("informejugada", "InformeJugada"),
+
+        ]#Fin de los permisos
+
+
+
 class Ofertas_Productores(models.Model):
 
 

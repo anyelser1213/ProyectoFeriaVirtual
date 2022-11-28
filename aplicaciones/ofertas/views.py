@@ -12,6 +12,10 @@ from aplicaciones.peticiones.form import PeticionForm
 
 
 
+from aplicaciones.ofertas.models import Contrato
+
+
+
 
 
 
