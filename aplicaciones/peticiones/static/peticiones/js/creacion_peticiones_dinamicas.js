@@ -57,7 +57,7 @@ function AgregarCamposTrabajo(){//Funcion para agregar nuevos campos en la vista
 
     var boton = elemento_clon.childNodes[3].childNodes[1].childNodes[3];
     var icono = elemento_clon.childNodes[3].childNodes[1].childNodes[3].childNodes[1]
-    icono.remove();
+    icono.remove();//Eliminamos el icono que esta aqui colocado
 
     var icono = document.createElement("img");
     icono.setAttribute("src","/static/peticiones/svg/dash-square.svg");
