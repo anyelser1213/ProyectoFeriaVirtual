@@ -5,3 +5,4 @@ from .models import *
 
 
 admin.site.register(Peticion)
+admin.site.register(Productos_de_Peticion)

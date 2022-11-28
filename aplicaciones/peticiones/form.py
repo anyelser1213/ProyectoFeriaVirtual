@@ -31,9 +31,9 @@ class PeticionForm(ModelForm):
         self.fields['cliente'].empty_label = None
         self.fields['cliente'].queryset = Usuarios.objects.filter(id=self.usuario.id)
 
-        self.fields['producto'].empty_label = None
+        #self.fields['producto'].empty_label = None
 
-        self.fields['calidad'].empty_label = None
+        #self.fields['calidad'].empty_label = None
         
         if self.usuario.nacionalidad == "chileno":
             CHOICES = (('nacional', 'Nacional'),)
