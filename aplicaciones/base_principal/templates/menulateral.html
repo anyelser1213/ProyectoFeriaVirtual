@@ -10,7 +10,7 @@
                     Tablero
                 </a>
 
-                {% if perms.inventario_stock.add_producto %}
+                {% if perms.productos.add_producto %}
 
                 <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#menuOferta" aria-expanded="false" aria-controls="menuOferta">
                     <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
@@ -19,14 +19,14 @@
                 </a>
                 <div class="collapse" id="menuOferta" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                     <nav class="sb-sidenav-menu-nested nav">
-                        <a class="nav-link" href="{% url 'inventario_stock:OfertasNacionales' %}">Nacionales</a>
-                        <a class="nav-link" href="{% url 'inventario_stock:OfertasInternacionales' %}">Internacionales</a>
+                        <a class="nav-link" href="{% url 'peticiones:OfertasNacionales' %}">Nacionales</a>
+                        <a class="nav-link" href="{% url 'peticiones:OfertasInternacionales' %}">Internacionales</a>
                     </nav>
                 </div>
                 {% endif %}
                 
                 
-                {% if perms.inventario_stock.peticiones %}
+                {% if perms.peticiones.peticiones %}
                 <div class="sb-sidenav-menu-heading">Ordenes</div>
 
                 <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#menuPeticion" aria-expanded="false" aria-controls="menuPeticion">
@@ -42,7 +42,7 @@
                 </div>
                 {% endif %}
 
-                {% if perms.inventario_stock.add_producto %}
+                {% if perms.productos.add_producto %}
                 <div class="sb-sidenav-menu-heading">Ventas</div>
 
                 <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#menuProducto" aria-expanded="false" aria-controls="menuProducto">

@@ -39,7 +39,7 @@ class Peticion(models.Model):
     productor_elegido = models.ForeignKey(settings.AUTH_USER_MODEL,related_name="productor_peticion", on_delete=models.CASCADE,blank=True, null=True)
     producto = models.ForeignKey(Producto, on_delete=models.CASCADE,blank=False, null=False)
     calidad = models.CharField("calidad",max_length=150,choices=calidad_producto,default='baja',blank=False, null=False)
-    cantidad = models.IntegerField(default=0,blank=False,null=False) #En base a Kilogramos(kg)
+    cantidad = models.IntegerField(default=1,blank=False,null=False) #En base a Kilogramos(kg)
 
     aprobado_por = models.ForeignKey(settings.AUTH_USER_MODEL,related_name="aprobado_por", on_delete=models.CASCADE,blank=True, null=True)
     estado_peticion = models.CharField("estado",max_length=150,choices=status_peticion,default='revision',blank=True, null=True)
