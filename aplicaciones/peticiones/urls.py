@@ -10,7 +10,8 @@ urlpatterns = [
     
 
     #Para las peticiones
-    path('PeticionCrear/', vistasPeticiones.PeticionCrear.as_view() ,name="PeticionCrear"),
+    path('PeticionCrear/', vistasPeticiones.PeticionCrear_def, name='PeticionCrear'),
+    #path('PeticionCrear/', vistasPeticiones.PeticionCrear.as_view() ,name="PeticionCrear"),
     path('PeticionListar/', vistasPeticiones.Peticionlistar.as_view() ,name="PeticionListar"),
 
 

@@ -33,6 +33,43 @@
                             <h1 class="mt-4">Petición</h1>
                             <ol class="breadcrumb mb-4">
                             </ol>
+
+
+
+
+
+                            
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                             
                             <div class="card mb-4">
                                 <div class="card-header">
@@ -41,52 +78,76 @@
                                 </div>
                                 <div class="card-body">
 
-                                    
-                                    <form method="post">
-                                        {% csrf_token %}
-                                        <div class="row g-3 align-items-center">
-                                            <div class="col-auto">
-                                              <label for="inputText" class="col-form-label">Producto:</label>
-                                            </div>
-                                            <div class="col-auto">
-                                                {{ form.producto }}
-                                             </div>
-
-                                             <div class="col-auto">
-                                                <label for="inputText" class="col-form-label">Calidad:</label>
-                                              </div>
-                                             <div class="col-auto">
-                                                {{ form.calidad }}
-                                             </div>
-
-                                             <div class="col-auto">
-                                                <label for="inputText" class="col-form-label">Cantidad:</label>
-                                              </div>
-                                             <div class="col-auto">
-                                                {{ form.cantidad }}
-                                             </div>
-
-                                             <div class="col-auto">
-                                                <!--Campos ocultos-->
-                                                {{ form.cliente }}
-                                                {{ form.productor_elegido }}
-                                                {{ form.aprobado_por }}
-                                                {{ form.estado_peticion }}
-                                                {{ form.tipo_peticion }}
-                                            </div>
-                                            <div class="col-auto">
-
-                                                <div class="col-auto">
-                                                    <span id="passwordHelpInline" class="form-text">
-                                                        <input type="submit" class="btn btn-warning " value="Crear">
-                                                    </span>
-                                                  </div>
-                                              
-                                            </div>
-                                        </div>
-                                        
+                                    <form action="#" method="POST" >  
+                                        <table class="table table-sm table-striped">
+                                          <thead>
+                                          <tr>
+                                            <th width="60%">Productos</th>
+                                            <th width="20%">Calidad</th>
+                                            <th width="20%">Cantidad</th>
+                                          
+                                          </tr>
+                                          </thead>
+                                          
                                             
+                                              {% csrf_token %}
+                                              <tbody id="listaTrabajos">
+                  
+                  
+                                                <tr id="clonacionTrabajos">
+                                                  <td>
+                                                    {{ form.productos }}
+                                                    
+                                                  <td>
+                                                    {{ form.calidad }}
+                                                    
+                                                  <td> 
+                                                    <div class="input-group input-group-sm">
+                                                        {{form.cantidad}}
+                                                       
+                                                          <button type="button" class="btn btn-info btn-flat" disabled >
+                                                            <i class="fa fa-stop"></i>
+                                                          </button>
+                                                    </div>
+                                                  </td>
+
+                                                  
+                                                </tr>  
+                                              </tbody>
+                  
+                                              <tfoot>
+                                                <td></td>
+                                                <td></td>
+                                                <td>
+                                                  <div class="row">
+                                                    <div class="col">
+                                                      <div class="btn-group btn-group-sm btn-block">
+                                                        <button type="submit"  class="btn btn-sm btn-primary btn-flat" id="idGuardarTrabajo" >
+                                                          <i class="fa fa-save"></i> Guardar
+                                                        </button>
+                                                        <button type="button"  class="btn btn-info btn-flat" id="AgregarTrabajoNuevo">
+                                                          <i class="fa fa-plus"></i>
+                                                        </button>
+                                                      </div>
+                                                    </div>
+                                                </div>
+                                                    
+                                                    
+                                                      
+                                                </td>
+                                              
+                  
+                                            
+                                                
+                                              
+                                              </tfoot>
+                                        
+                                          
+                                            
+                                        </table>
                                     </form>
+
+                                    
 
                                 </div>
                             </div>
@@ -95,7 +156,7 @@
                     <footer class="py-4 bg-light mt-auto">
                         <div class="container-fluid px-4">
                             <div class="d-flex align-items-center justify-content-between small">
-                                <div class="text-muted">Copyright &copy; Your Website 2022</div>
+                                <div class="text-muted">Copyright &copy; Maipo Grande 2022</div>
                                 <div>
                                     <a href="#">Privacy Policy</a>
                                     &middot;

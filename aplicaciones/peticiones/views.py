@@ -8,7 +8,7 @@ from aplicaciones.productos.form import ProductoForm
 
 #Aplicacion de PETICIONES
 from aplicaciones.peticiones.models import Peticion
-from aplicaciones.peticiones.form import PeticionForm
+from aplicaciones.peticiones.form import PeticionPersonalizadoForm,PeticionForm
 
 
 
@@ -23,18 +23,121 @@ from django.views.generic import View,TemplateView, CreateView, UpdateView, Deta
 ######################## PARA LAS PETICIONES ################################################
 
 
+def PeticionCrear_def(request):
+    #verificamos que estamos ogeados
+    if request.user.is_authenticated:
+        
+        contexto = {}
+        #Cuando solicitamos una pagina
+        if request.method == "GET":
+            
+            print("ENTRAMOS EN GET PARA CREAR LA PETICION")
+            form = PeticionPersonalizadoForm(usuario=request.user)
+            contexto = {'form': form,
+                        'user': request.user}
+            #print("entramos en GET:", orden)
+
+
+
+
+
+
+        #Metodo(POST)
+        else:
+
+            #print(request.POST)
+            print("\nEntramos en post de la peticion")
+            form = PeticionPersonalizadoForm(data=request.POST,usuario=request.user)
+
+            #si el formulario tiene los datos correctos entramos aqui
+            #if form.is_valid():
+            # and trabajo.is_valid() and suministro.is_valid():
+            
+            
+            #    print("\n")
+            #    print("entramos aqui en POST")
+                #orden = form.save()
+                #orden_creada = orden.save(commit=False)
+                #print("ORDEN CREADA:",orden_creada)
+                #print(orden_creada.id)
+                #print(orden_creada.observacion)
+                #orden_creada.save()
+            
+                #print(suministro.cleaned_data)
+
+                
+            #    contexto = {'user': request.user,
+            #                }
+                
+            
+            
+            
+            #else:
+
+            #    print("la orden no fue creada...")
+                
+            # redirect to a new URL:
+            return render(request, 'servicios/ordenes/orden-creada.html',contexto)
+    
+    
+    
+    
+    #Si el usuario no esta autenticado
+    else:
+
+        print("USUARIO NO AUTENTICADO")
+        return redirect('/login')
+
+
+    #print(contexto)
+    return render(request, 'peticiones/peticiones-crear.html', contexto)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 class PeticionCrear(CreateView):
 
     model = Peticion  
-    form_class = PeticionForm
+    #form_class = PeticionPersonalizadoForm
     template_name = "peticiones/peticiones-crear.html"
     success_url = reverse_lazy('peticiones:PeticionListar')
 
+    
     #Para enviar argumentos al formulario
-    def get_form_kwargs(self):
-        kwargs = super(PeticionCrear, self).get_form_kwargs()
-        kwargs['usuario'] = self.request.user
-        return kwargs
+    #def get_form_kwargs(self):
+        #kwargs = super(PeticionPersonalizadoForm, self).get_form_kwargs()
+        #kwargs['usuario'] = self.request.user
+    #    return kwargs
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -47,7 +150,7 @@ class PeticionCrear(CreateView):
         print("entrando en post")
 
         #Si pide argumentos se lo pasamos
-        form = PeticionForm(request.POST,usuario=self.request.user)
+        form = PeticionPersonalizadoForm(data=request.POST)#,usuario=self.request.user
         if form.is_valid():
             form.save()#Guardamos el objeto
             return HttpResponseRedirect(self.success_url)

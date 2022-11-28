@@ -12,10 +12,47 @@ from aplicaciones.usuarios.models import *
 ###################### AQUI COMIENZAN LOS FORMULARIOS PARA PETICIONES ##########################################
 
 
+####################### FINALIZAMOS FORMULARIOS INDIVIDUALES #############################################
+
+class PeticionPersonalizadoForm(forms.Form):
+
+    #Para determinar que calidad tienen las frutas
+    calidad_producto = [
+        ('alta','Alta'),
+        ('mediana','Mediana'),
+        ('baja','Baja'),
+    ]
+
+
+    #nombre = forms.CharField(label='Nombre',max_length=30,error_messages={'required': 'no funciona asi'},widget=forms.TextInput(attrs={'placeholder':'Ingresa nombre de master'}))
+    productos = forms.ModelChoiceField(queryset=Producto.objects.all(),widget=forms.Select(attrs={'class':'form-control form-control-sm'}))
+    calidad = forms.ChoiceField(choices=calidad_producto,widget=forms.Select(attrs={'class':'form-control form-control-sm'}))
+    cantidad = forms.FloatField(required=True, min_value=1, widget=forms.NumberInput(attrs={'class':'form-control','value':'1','id': 'form_homework', 'step': "0.01"})) 
+    #rif_ci = forms.CharField(max_length=20,widget=forms.TextInput(attrs={'placeholder':'Ingresa tu cedula de identidad'}))
+    #entidad_estatus = forms.ChoiceField(choices=entidad_estados)
+    #email = forms.EmailField(initial='',widget=forms.EmailInput(attrs={'placeholder':'Ejemplo@gmail.com'}))
+    #telefono = forms.IntegerField()
+    #estado = forms.ModelChoiceField(Estado.objects.all(),empty_label=None,required=False)
+    #ciudad = forms.ModelChoiceField(Ciudad.objects.all(),empty_label=None,required=False)
+    #BotonFantasma = forms.BooleanField(required=False)
+    #BotonFantasmaComer = forms.BooleanField(required=False)
+    #descripcion = forms.CharField(widget=forms.Textarea(attrs={'placeholder':'Ingresa tu Direccion '}))
+    
+    def __init__(self,*args,**kwargs):
+        usuario = kwargs.pop('usuario')
+        super(PeticionPersonalizadoForm,self).__init__(*args, **kwargs)
+        
+        self.fields['productos'].empty_label = None
+        #self.fields['telefono'].widget.attrs['placeholder'] = "Ingresa tu numero telefonico"
+        #self.fields['entidad_estatus'].initial= "Activo sin venta"
+        #productos = forms.ModelChoiceField(queryset=Producto.objects.all())
+        print(usuario)
+
+
+
 
 class PeticionForm(ModelForm):
 
-    
 
     def __init__(self, *args, **kwargs):
         self.usuario = kwargs.pop('usuario',None)
@@ -26,7 +63,12 @@ class PeticionForm(ModelForm):
         print("usuario nacionalidad : ",self.usuario.nacionalidad)
         #print("usuario ID: ",self.usuarioID.id)
 
+        """
+        for field in self.fields:
+            # Recorremos todos los campos del modelo para añadirle class="form-control
+            self.fields[field].widget.attrs.update({'class': 'form-control'})
         
+        """
 
         self.fields['cliente'].empty_label = None
         self.fields['cliente'].queryset = Usuarios.objects.filter(id=self.usuario.id)
