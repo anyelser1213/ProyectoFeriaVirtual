@@ -29,6 +29,7 @@ urlpatterns = [
 
     path('', include(('aplicaciones.base_principal.urls'))),
     path('', include(('aplicaciones.productos.urls'))),
+    path('', include(('aplicaciones.ofertas.urls'))),
     path('', include(('aplicaciones.peticiones.urls'))),
     path('', include(('aplicaciones.inventario_stock.urls'))),
     path('', include(('aplicaciones.usuarios.urls'))),
