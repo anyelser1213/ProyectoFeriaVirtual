@@ -84,17 +84,17 @@
                                           <tr>
                                             <th width="60%">Productos</th>
                                             <th width="20%">Calidad</th>
-                                            <th width="20%">Cantidad</th>
+                                            <th width="20%">Cantidad(Kg)</th>
                                           
                                           </tr>
                                           </thead>
                                           
                                             
                                               {% csrf_token %}
-                                              <tbody id="listaTrabajos">
+                                              <tbody id="listaProductos">
                   
                   
-                                                <tr id="clonacionTrabajos">
+                                                <tr id="clonacionProductos">
                                                   <td>
                                                     {{ form.productos }}
                                                     
@@ -105,9 +105,10 @@
                                                     <div class="input-group input-group-sm">
                                                         {{form.cantidad}}
                                                        
-                                                          <button type="button" class="btn btn-info btn-flat" disabled >
-                                                            <i class="fa fa-stop"></i>
+                                                          <button type="button" class=" btn-info btn-flat" disabled >
+                                                            <img src="{% static 'peticiones/svg/stop-btn.svg' %} " alt="POL">
                                                           </button>
+                                                          
                                                     </div>
                                                   </td>
 
@@ -162,9 +163,5 @@
 
 
             {% block enlacessecundariosJS %}
-                <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
-                <script src="{% static 'assets/demo/chart-area-demo.js' %}"></script>
-                <script src="{% static 'assets/demo/chart-bar-demo.js' %}"></script>
-                <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
-                <script src="{% static 'js/datatables-simple-demo.js' %}"></script>
+                <script src="{% static 'peticiones/js/funciones_ordenes.js' %}"></script>
             {% endblock %}
