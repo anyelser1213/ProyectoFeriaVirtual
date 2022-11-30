@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     'aplicaciones.productos',
     'aplicaciones.inventario_stock',
     'aplicaciones.contabilidad',
+    'aplicaciones.pdfs',
 
     
 ]
