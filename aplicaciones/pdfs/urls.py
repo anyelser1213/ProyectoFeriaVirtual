@@ -9,8 +9,21 @@ app_name ="pdfs"
 urlpatterns = [
 
 
-    #Para crear los pdfs
-    path('pdf/', vistasPdf.some_view ,name="pdf"),
+    #Para crear los pdfs con clases
+    path('pdf/', vistasPdf.ReportePersonasPDF.as_view() ,name="pdf"),
+
+    #Con argumentos 
+    path('pdf/<int:pk>', vistasPdf.ReportePersonasPDF.as_view() ,name="pdf"),
+
+    path('pdf_2/<int:pk>', vistasPdf.A4View.as_view() ,name="pdf_2"),
+
+    #path('pdf_3/', vistasPdf.PrivacyPaperPrinter.get_pdf ,name="pdf_3"),
+    
+
+    #Pruebas
+     #path('pdf_prueba/', vistasPdf.crear_pdf ,name="pdf2"),
+
+
     #path('Ofertas_internacionales/', vistasPeticiones.Ofertas_Internacionales.as_view() ,name="OfertasInternacionales"),
     
     
