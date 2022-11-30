@@ -1,5 +1,5 @@
 from django.http import HttpResponse, HttpResponseRedirect
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from django.urls import reverse, reverse_lazy
 
 #Aplicacion de PRODUCTOS
@@ -7,7 +7,7 @@ from aplicaciones.productos.models import Producto
 from aplicaciones.productos.form import ProductoForm
 
 #Aplicacion de PETICIONES
-from aplicaciones.peticiones.models import Peticion
+from aplicaciones.peticiones.models import Peticion, Productos_de_Peticion
 from aplicaciones.peticiones.form import PeticionPersonalizadoForm,PeticionForm
 
 
@@ -46,15 +46,44 @@ def PeticionCrear_def(request):
         else:
 
             #print(request.POST)
-            print("\nEntramos en post de la peticion")
+            print("\nEntramos en POST de la peticion\n")
+            print(request.POST)
             form = PeticionPersonalizadoForm(data=request.POST,usuario=request.user)
 
+            #Variables para guardar
+            productos = request.POST.getlist('productos')
+            calidad = request.POST.getlist('calidad')
+            cantidad = request.POST.getlist('cantidad')
+            
+            print(productos," jajajajaja")
+
             #si el formulario tiene los datos correctos entramos aqui
-            #if form.is_valid():
+            
+            
+            
+            if form.is_valid():
             # and trabajo.is_valid() and suministro.is_valid():
             
             
-            #    print("\n")
+                print("\nEl formulario es correcto")
+
+                #Creamos la peticion primero
+                Peticion_Creada = Peticion.objects.create(cliente=request.user)
+
+
+                #Con este for guardamos los productos en la peticion correspondiente
+                for i in range(len(productos)):
+                    Productos_de_Peticion.objects.create(
+                        id_peticion=Peticion_Creada,
+                        id_producto=Producto.objects.get(id=productos[i]),
+                        calidad=calidad[i],
+                        cantidad=cantidad[i])
+                    print(i)
+
+
+
+
+                return redirect('peticiones:PeticionListar')
             #    print("entramos aqui en POST")
                 #orden = form.save()
                 #orden_creada = orden.save(commit=False)
@@ -72,12 +101,12 @@ def PeticionCrear_def(request):
             
             
             
-            #else:
+            else:
 
-            #    print("la orden no fue creada...")
+                print("la orden no fue creada...")
                 
             # redirect to a new URL:
-            return render(request, 'servicios/ordenes/orden-creada.html',contexto)
+            return render(request, 'peticiones/peticiones-crear.html',contexto)
     
     
     
@@ -98,33 +127,7 @@ def PeticionCrear_def(request):
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+"""
 class PeticionCrear(CreateView):
 
     model = Peticion  
@@ -168,7 +171,7 @@ class PeticionCrear(CreateView):
         
         #Asi es una forma de enviar
         #return render(request,self.template_name,{"form":form})
-
+"""
 
 
 class Peticionlistar(ListView):
@@ -200,6 +203,32 @@ class Peticionlistar(ListView):
 
 
 
+class Peticion_Productos_View(ListView):
+    model = Productos_de_Peticion
+    context_object_name = "Productos"
+    template_name = "peticiones/peticiones-productos.html"
+
+    #Para establecer parametros en context_object_name
+    def get_queryset(self):
+
+        #Aqui debemos hacer una logica en caso de que sea administrador o usuario diferente a administrador
+        print("Usuario Perfil:",self.request.user.rol,"Variable: ",self.kwargs.get('pk',None))
+        return Productos_de_Peticion.objects.filter(id_peticion=self.kwargs.get('pk',None)) # Get 5 books containing the title war
+    
+
+
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        #print("jajajaja detalles empresa de : ",self.object.id)
+        #print(Departamento.objects.filter(empresa_id=self.object.id))
+        context['id'] = self.kwargs.get('pk',None)
+        context['titulo'] = "Detail Company"
+        #context['departamentos'] = Departamento.objects.filter(empresa_id=self.object.id).order_by("-fecha_creacion")
+        #context['cantidad_empresas'] = Empresa.objects.filter(creado_por=self.request.user.id).count()
+        context['usuario'] = self.request.user
+        #context['entrevista_lista'] = Entrevista.objects.filter(departamento_id=self.object.id)
+        return context
 #############################################################################################
 
 

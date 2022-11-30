@@ -14,6 +14,9 @@ urlpatterns = [
     #path('PeticionCrear/', vistasPeticiones.PeticionCrear.as_view() ,name="PeticionCrear"),
     path('PeticionListar/', vistasPeticiones.Peticionlistar.as_view() ,name="PeticionListar"),
 
+    #Url para ver productos de una peticion
+    path('Peticion_Productos/<int:pk>/', vistasPeticiones.Peticion_Productos_View.as_view() ,name="Peticion_Productos"),
+
 
     
     

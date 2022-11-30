@@ -66,7 +66,7 @@ class Peticion(models.Model):
     #fecha_caducidad = models.DateField(auto_now_add=False,auto_now=False,blank=True) #Solo fecha
 
     def __str__(self):
-         return "Peticion de : "+str(self.cliente.username)+", Estatus: "+str(self.estado_peticion)+", Tipo: "+str(self.tipo_peticion)
+         return "Peticion "+str(self.id)+", de : "+str(self.cliente.username)+", Estatus: "+str(self.estado_peticion)+", Tipo: "+str(self.tipo_peticion)
 
     class Meta:
 
@@ -112,5 +112,5 @@ class Productos_de_Peticion(models.Model):
     #)
 
     def __str__(self):
-        return "Peticion de: "+str(self.id_peticion.cliente.username)+" ----- Pedido: "+str(self.id_producto)+" ----- Calidad:"+str(self.calidad)+" ----- Cantidad: "+str(self.cantidad)+"Kg"
+        return "Peticion: "+str(self.id_peticion.id) +", de: "+str(self.id_peticion.cliente.username)+" ----- Pedido: "+str(self.id_producto)+" ----- Calidad:"+str(self.calidad)+" ----- Cantidad: "+str(self.cantidad)+"Kg"
         #return "id: "+str(self.id)+", Tipo Jugada: "+str(self.id_jugada.id_tipo_jugada)+", "+str(self.id_jugada)+" "+str(self.id_usuario)+" "+str(self.id_comprobante)+" "+str(self.id_telefono)+" Usuario: "+str(self.id_usuario)+" Status: "+self.status
