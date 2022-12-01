@@ -19,6 +19,8 @@ urlpatterns = [
     #Url para ver procesos de una peticion
     path('Peticion_Procesos/<int:pk>/', vistasPeticiones.Peticion_Procesos_View.as_view() ,name="Peticion_Procesos"),
 
+    #Url para ver aprobar una peticion
+    path('Peticion_Aprobar/<int:pk>/', vistasPeticiones.Peticion_Aprobar ,name="Peticion_Aprobar"),
 
     
     

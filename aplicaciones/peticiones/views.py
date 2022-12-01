@@ -3,6 +3,9 @@ from django.shortcuts import render,redirect
 from django.urls import reverse, reverse_lazy
 
 #Aplicacion de PRODUCTOS
+from aplicaciones.usuarios.models import Usuarios
+
+#Aplicacion de PRODUCTOS
 from aplicaciones.productos.models import Producto
 from aplicaciones.productos.form import ProductoForm
 
@@ -84,7 +87,7 @@ def PeticionCrear_def(request):
 
 
                 return redirect('peticiones:PeticionListar')
-            #    print("entramos aqui en POST")
+                #print("entramos aqui en POST")
                 #orden = form.save()
                 #orden_creada = orden.save(commit=False)
                 #print("ORDEN CREADA:",orden_creada)
@@ -267,4 +270,70 @@ class Peticion_Procesos_View(DetailView):
 #############################################################################################
 
 
+
+
+
+###### Para aprobar las peticiones ########
+
+def Peticion_Aprobar(request,pk):
+    #verificamos que estamos ogeados
+    if request.user.is_authenticated:
+        
+        contexto = {}
+        #Cuando solicitamos una pagina
+        if request.method == "GET":
+            
+            print("ENTRAMOS EN GET PARA APROBAR LA PETICION",pk)
+
+            #Aqui hacemos todo lo que se necesita para aprobar
+            Peticion_aprobar = Peticion.objects.get(id=pk)
+            Peticion_aprobar.revision = True
+            print(Usuarios.objects.get(id=request.user.id))
+            Peticion_aprobar.aprobado_por = Usuarios.objects.get(id=request.user.id)
+            Peticion_aprobar.oferta = True
+            Peticion_aprobar.estado_peticion = "oferta"
+            Peticion_aprobar.save()
+
+            print(Peticion_aprobar)
+            
+            #contexto = {'form': form,
+            #            'user': request.user}
+            #print("entramos en GET:", orden)
+            # redirect to a new URL:
+            return redirect('peticiones:PeticionListar')
+
+
+
+
+
+
+        #Metodo(POST)
+        else:
+
+            #print(request.POST)
+            print("\nEntramos en POST de la peticionAPROBAR\n")
+            print(request.POST)
+            
+
+            #Variables para guardar
+            #productos = request.POST.getlist('productos')
+            #calidad = request.POST.getlist('calidad')
+            #cantidad = request.POST.getlist('cantidad')
+            
+            #print(productos," jajajajaja")
+
+            #si el formulario tiene los datos correctos entramos aqui
+            
+            return redirect('peticiones:PeticionListar')
+            
+            
+    
+    
+    
+    
+    #Si el usuario no esta autenticado
+    else:
+
+        print("USUARIO NO AUTENTICADO")
+        return redirect('/login')
 

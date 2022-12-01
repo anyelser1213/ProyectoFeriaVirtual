@@ -83,9 +83,11 @@
                                                         
 
                                                         <a href="{% url 'peticiones:Peticion_Procesos' peticion.id %} ">
-                                                            <button type="button" class="btn btn-success"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bookshelf" viewBox="0 0 16 16">
-                                                                <path d="M2.5 0a.5.5 0 0 1 .5.5V2h10V.5a.5.5 0 0 1 1 0v15a.5.5 0 0 1-1 0V15H3v.5a.5.5 0 0 1-1 0V.5a.5.5 0 0 1 .5-.5zM3 14h10v-3H3v3zm0-4h10V7H3v3zm0-4h10V3H3v3z"/>
-                                                            </svg> Procesos</button>
+                                                            <button type="button" class="btn btn-primary">
+                                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bezier2" viewBox="0 0 16 16">
+                                                                    <path fill-rule="evenodd" d="M1 2.5A1.5 1.5 0 0 1 2.5 1h1A1.5 1.5 0 0 1 5 2.5h4.134a1 1 0 1 1 0 1h-2.01c.18.18.34.381.484.605.638.992.892 2.354.892 3.895 0 1.993.257 3.092.713 3.7.356.476.895.721 1.787.784A1.5 1.5 0 0 1 12.5 11h1a1.5 1.5 0 0 1 1.5 1.5v1a1.5 1.5 0 0 1-1.5 1.5h-1a1.5 1.5 0 0 1-1.5-1.5H6.866a1 1 0 1 1 0-1h1.711a2.839 2.839 0 0 1-.165-.2C7.743 11.407 7.5 10.007 7.5 8c0-1.46-.246-2.597-.733-3.355-.39-.605-.952-1-1.767-1.112A1.5 1.5 0 0 1 3.5 5h-1A1.5 1.5 0 0 1 1 3.5v-1zM2.5 2a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1zm10 10a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1z"/>
+                                                                  </svg> Procesos
+                                                            </button>
                                                         </a>
 
                                                           <button  type="button" class="btn btn-danger">
@@ -96,6 +98,24 @@
                                                               </svg>
                                                             Eliminar
                                                         </button>
+
+                                                        {% if user.rol == "administrador" %}
+                                                            {% if peticion.estado_peticion != "revision" %}
+                                                            
+                                                            {% else %}
+                                                                <a href="{% url 'peticiones:Peticion_Aprobar' peticion.id %} ">
+                                                                    <button type="button" class="btn btn-success">
+                                                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-capslock" viewBox="0 0 16 16">
+                                                                            <path fill-rule="evenodd" d="M7.27 1.047a1 1 0 0 1 1.46 0l6.345 6.77c.6.638.146 1.683-.73 1.683H11.5v1a1 1 0 0 1-1 1h-5a1 1 0 0 1-1-1v-1H1.654C.78 9.5.326 8.455.924 7.816L7.27 1.047zM14.346 8.5 8 1.731 1.654 8.5H4.5a1 1 0 0 1 1 1v1h5v-1a1 1 0 0 1 1-1h2.846zm-9.846 5a1 1 0 0 1 1-1h5a1 1 0 0 1 1 1v1a1 1 0 0 1-1 1h-5a1 1 0 0 1-1-1v-1zm6 0h-5v1h5v-1z"/>
+                                                                        </svg> Aprobar
+                                                                </button>
+                                                                </a>
+                                                            {% endif %}
+
+                                                            
+                                                        {% else %}
+                                                            
+                                                        {% endif %}
 
                                                         <!--
                                                         <button type="button" class="btn btn-danger" id={{jugada.id}} data-status="{{jugada.status }}" data-comprobante="{{jugada.id_comprobante.numero_comprobante }}"  onclick="Pagar_Comprobante(this);">
