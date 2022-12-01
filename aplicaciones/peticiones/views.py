@@ -13,6 +13,8 @@ from aplicaciones.productos.form import ProductoForm
 from aplicaciones.peticiones.models import Peticion, Productos_de_Peticion
 from aplicaciones.peticiones.form import PeticionPersonalizadoForm,PeticionForm
 
+#Aplicacion de ofertas
+from aplicaciones.ofertas.models import Contrato
 
 
 
@@ -38,7 +40,27 @@ def PeticionCrear_def(request):
             form = PeticionPersonalizadoForm(usuario=request.user)
             contexto = {'form': form,
                         'user': request.user}
-            #print("entramos en GET:", orden)
+            contexto['contrato'] ="SIN CONTRATO"
+
+            contrato_usuario = Contrato.objects.filter(usuario=request.user)
+            if contrato_usuario.exists():
+                print("Si tiene contrato")
+                
+                #Verificamos si tiene el contrato vigente
+                contrato_vigente = Contrato.objects.get(usuario=self.request.user)
+                if contrato_vigente.estado_contrato == "vigente":
+                    print("El contrato del usuario:",self.request.user.username,"SI esta vigente.")
+                    contexto['ofertas'] = Peticion.objects.filter(tipo_peticion="nacional")
+                    contexto['contrato'] ="CONTRATO VIGENTE"
+
+                else:
+                    print("El contrato del usuario:",self.request.user.username,"NO esta vigente.")
+                    contexto['ofertas'] = Peticion.objects.none()
+                    contexto['contrato'] ="CONTRATO CADUCADO"
+            else:
+                print("No tiene contrato")
+                contexto['contrato'] ="SIN CONTRATO"
+                #print("entramos en GET:", orden)
 
 
 

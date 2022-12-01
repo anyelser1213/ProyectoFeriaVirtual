@@ -11,7 +11,7 @@ from aplicaciones.peticiones.models import Peticion
 from aplicaciones.peticiones.form import PeticionForm
 
 
-
+#Aplicacion de ofertas
 from aplicaciones.ofertas.models import Contrato
 
 
@@ -87,7 +87,7 @@ class Ofertas_Nacionales(TemplateView):
 
         context['ofertas'] = Peticion.objects.none()
         context['contrato'] ="SIN CONTRATO"
-        #Aqui verificamos si el inventario ya existe
+        #Aqui verificamos si posee un contrato ya existe
         contrato_usuario = Contrato.objects.filter(usuario=self.request.user)
         if contrato_usuario.exists():
             print("Si tiene contrato")
