@@ -1,9 +1,14 @@
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render, redirect
 
-#De la aplicacion de Productos
+#De la aplicacion de Peticiones
 from aplicaciones.peticiones.models import Peticion
 from aplicaciones.peticiones.form import PeticionForm
+
+
+#De la aplicacion de Productos
+from aplicaciones.productos.models import Producto
+from aplicaciones.productos.form import ProductoForm
 
 
 from aplicaciones.inventario_stock.form import * #Aqui todos los formularios del inventario
@@ -64,7 +69,7 @@ class Inventario_asignar(CreateView):
         precio = float(request.POST.get("precio"))
         
 
-
+        print("Verificando aqui...", productor," ",producto," ",calidad," ",cantidad)
         ###### Verificamos que existe en el inventario sino se crea uno nuevo ###
 
         #Aqui verificamos si el inventario ya existe
@@ -86,8 +91,15 @@ class Inventario_asignar(CreateView):
             
             
         else:
-            pass
 
+            #Obtenemos los datos
+            productor = Usuarios.objects.get(id=int(productor))
+            producto = Producto.objects.get(id=int(producto))
+            inventario_a_usar = Inventario.objects.create(productor_id=productor,producto_id=producto,calidad=str(calidad),cantidad=float(cantidad),precio=float(precio))
+            
+            
+            
+            return HttpResponseRedirect(self.success_url)
 
         print("El id del productor es: ", productor)
 
