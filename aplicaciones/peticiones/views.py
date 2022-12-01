@@ -203,6 +203,10 @@ class Peticionlistar(ListView):
 
 
 
+
+
+
+
 class Peticion_Productos_View(ListView):
     model = Productos_de_Peticion
     context_object_name = "Productos"
@@ -229,6 +233,37 @@ class Peticion_Productos_View(ListView):
         context['usuario'] = self.request.user
         #context['entrevista_lista'] = Entrevista.objects.filter(departamento_id=self.object.id)
         return context
+
+
+
+class Peticion_Procesos_View(DetailView):
+    
+    model = Peticion
+    context_object_name = "peticion"
+    template_name = "peticiones/peticiones-procesos.html"
+
+    #Para establecer parametros en context_object_name
+    #def get_queryset(self):
+
+        #Aqui debemos hacer una logica en caso de que sea administrador o usuario diferente a administrador
+    #    print("Usuario Perfil:",self.request.user.rol,"Variable: ",self.kwargs.get('pk',None))
+    #    return Productos_de_Peticion.objects.filter(id_peticion=self.kwargs.get('pk',None)) # Get 5 books containing the title war
+    
+
+    
+
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        print("jajajaja detalles peticion de : ",self.object.id)
+        context['id'] = self.kwargs.get('pk',None)
+        #context['titulo'] = "Detail Company"
+        context['usuario'] = self.request.user
+        #context['entrevista_lista'] = Entrevista.objects.filter(departamento_id=self.object.id)
+        return context
+
+
+
 #############################################################################################
 
 

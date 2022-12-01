@@ -45,6 +45,7 @@
                                     <table id="datatablesSimple">
                                         <thead>
                                             <tr>
+                                                <th>#</th>
                                                 <th>Cliente</th>
                                                 <th>Aprobado Por</th>
                                                 <th>Estado</th>
@@ -54,9 +55,20 @@
                                         <tbody>
                                             {% for peticion in peticiones  %}
                                                 <tr>
-                                                    <td>{{ peticion.cliente.username|upper }}</td>
-                                                    <td>{{ peticion.aprobado_por.username|upper}}</td>
-                                                    <td>{{ peticion.estado_peticion}}</td>
+                                                    <td>{{ forloop.counter }}</td>
+                                                    <td>{{ peticion.cliente.username|title }}</td>
+
+                                                    <td>
+                                                        {% if peticion.aprobado_por %}
+                                                        <p>{{ peticion.aprobado_por.username|upper}}</p>
+                                                    {% else %}
+                                                        <p>En proceso</p>
+                                                    
+                                                    {% endif %}
+                                                    </td>
+
+                                                    
+                                                    <td>{{ peticion.estado_peticion|title}}</td>
                                                     
                                                     <td>
 
@@ -70,11 +82,11 @@
 
                                                         
 
-
-                                                        <button type="button" class="btn btn-success"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bookshelf" viewBox="0 0 16 16">
-                                                            <path d="M2.5 0a.5.5 0 0 1 .5.5V2h10V.5a.5.5 0 0 1 1 0v15a.5.5 0 0 1-1 0V15H3v.5a.5.5 0 0 1-1 0V.5a.5.5 0 0 1 .5-.5zM3 14h10v-3H3v3zm0-4h10V7H3v3zm0-4h10V3H3v3z"/>
-                                                          </svg> Procesos</button>
-
+                                                        <a href="{% url 'peticiones:Peticion_Procesos' peticion.id %} ">
+                                                            <button type="button" class="btn btn-success"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bookshelf" viewBox="0 0 16 16">
+                                                                <path d="M2.5 0a.5.5 0 0 1 .5.5V2h10V.5a.5.5 0 0 1 1 0v15a.5.5 0 0 1-1 0V15H3v.5a.5.5 0 0 1-1 0V.5a.5.5 0 0 1 .5-.5zM3 14h10v-3H3v3zm0-4h10V7H3v3zm0-4h10V3H3v3z"/>
+                                                            </svg> Procesos</button>
+                                                        </a>
 
                                                           <button  type="button" class="btn btn-danger">
                                                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clipboard2-x" viewBox="0 0 16 16">

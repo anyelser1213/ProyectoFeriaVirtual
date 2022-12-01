@@ -108,8 +108,8 @@ class Usuarios(AbstractBaseUser,PermissionsMixin):
         #('cliente_E','Cliente Externo'),
         #('cliente_I','Cliente Interno'),
         ('cliente','Cliente'),
-        ('transportista','transportista'),
-        ('consultor','consultor'),
+        ('transportista','Transportista'),
+        ('consultor','Consultor'),
     ]
 
     nacionalidad = [
