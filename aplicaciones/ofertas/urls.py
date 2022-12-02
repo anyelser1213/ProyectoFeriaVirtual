@@ -12,6 +12,9 @@ urlpatterns = [
      #Para las ofertas nacionales e internacionales
     path('Ofertas_nacionales/', vistasPeticiones.Ofertas_Nacionales.as_view() ,name="OfertasNacionales"),
     path('Ofertas_internacionales/', vistasPeticiones.Ofertas_Internacionales.as_view() ,name="OfertasInternacionales"),
+
+    #Ofertas que lanzan los productores
+    #path('Productor_oferta/', vistasPeticiones.Ofertas_Internacionales.as_view() ,name="OfertasInternacionales"),
     
     
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

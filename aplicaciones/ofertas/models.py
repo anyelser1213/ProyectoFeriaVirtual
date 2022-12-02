@@ -65,10 +65,10 @@ class Ofertas_Productores(models.Model):
     id = models.AutoField(primary_key=True)
     peticion = models.ForeignKey(Peticion, on_delete=models.CASCADE,blank=True, null=True)
     productor = models.ForeignKey(settings.AUTH_USER_MODEL,related_name="productor_oferta", on_delete=models.CASCADE,blank=True, null=True)
-    producto = models.ForeignKey(Producto, on_delete=models.CASCADE,blank=False, null=False)
-    calidad = models.CharField("calidad",max_length=150,choices=calidad_producto,default='baja',blank=False, null=False)
-    cantidad = models.IntegerField(default=1,blank=False,null=False) #En base a Kilogramos(kg)
-    precio_kilo = models.FloatField(default=1,blank=True,null=True) #Precio por Kilo
+    #producto = models.ForeignKey(Producto, on_delete=models.CASCADE,blank=False, null=False)
+    #calidad = models.CharField("calidad",max_length=150,choices=calidad_producto,default='baja',blank=False, null=False)
+    #cantidad = models.IntegerField(default=1,blank=False,null=False) #En base a Kilogramos(kg)
+    precio = models.FloatField(default=1,blank=True,null=True) #Precio por Kilo
 
     oferta_aprobado_por = models.ForeignKey(settings.AUTH_USER_MODEL,related_name="oferta_aprobado_por", on_delete=models.CASCADE,blank=True, null=True)
     estado_oferta = models.CharField("estado",max_length=150,choices=status_oferta,default='revision',blank=True, null=True)
